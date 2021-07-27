@@ -1,24 +1,45 @@
-# README
+# Choreganize
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the "frontend" repo for the Chorganize application. It is responsible 
 
-Things you may want to cover:
+### About this Project
 
-* Ruby version
+Chorganize is an application in which users can create, complete, and monitor chores for their household.
 
-* System dependencies
+### Database Schema
+<!-- upload image here -->
 
-* Configuration
+### Getting Started
 
-* Database creation
+These instructions will give you a copy of the project up and running on
+your local machine for development and testing purposes. See deployment
+for notes on deploying the project on a live system.
 
-* Database initialization
+### Local Setup
 
-* How to run the test suite
+1. Fork and Clone the repo
+2. Install gem packages: `bundle install`
+3. Setup the database: `rails db:create`
 
-* Services (job queues, cache servers, search engines, etc.)
+### Versions
 
-* Deployment instructions
+- Ruby 2.7.2
 
-* ...
+- Rails 5.2.6
+
+## Running the tests
+
+Run `bundle exec rspec` to run the test suite
+
+## Deployment
+
+See our app in action [here](<!--heroku link here -->)
+
+## Contact
+Created by
+
+* Andrew Shaffer [GitHub](https://github.com/Aphilosopher30) • [LinkedIn](https://www.linkedin.com/in/andrew-shafer-0631ab20a/)
+* Emmy Morris [GitHub](https://github.com/EmmyMorris) • [LinkedIn](https://www.linkedin.com/in/meaghanmorris1/)
+* Kevin Nguyen [GitHub](https://github.com/denverdevelopments) • [LinkedIn](https://www.linkedin.com/in/kevin-nguyen-59510520a/)
+* Suzie Kim [GitHub](https://github.com/suzkiee) • [LinkedIn](https://www.linkedin.com/in/kim-suzie/)
+* Zach Trokey [GitHub](https://github.com/ztrokey) • [LinkedIn](https://www.linkedin.com/in/zach-trokey/)
