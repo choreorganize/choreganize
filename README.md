@@ -1,10 +1,10 @@
 # Choreganize
 
-This is the "frontend" repo for the Chorganize application. It is responsible 
+This is the "frontend" repository for the Chorganize application. It is responsible for authenticating the user and making api requests to our [backend application](https://github.com/choreorganize/choreganize-api).
 
 ### About this Project
 
-Chorganize is an application in which users can create, complete, and monitor chores for their household.
+Chorganize is an application in which users can create, complete, and monitor chores for their household. Each chore is weighted by difficulty to ensure fairness accross all the users of a household.
 
 ### Database Schema
 <!-- upload image here -->
@@ -12,21 +12,40 @@ Chorganize is an application in which users can create, complete, and monitor ch
 ### Getting Started
 
 These instructions will give you a copy of the project up and running on
-your local machine for development and testing purposes. See deployment
-for notes on deploying the project on a live system.
+your local machine for development and testing purposes. 
 
-### Local Setup
+## Local Setup
 
 1. Fork and Clone the repo
 2. Install gem packages: `bundle install`
 3. Setup the database: `rails db:create`
+4. Run migrations: ` rails db:migrate`
+5. Install the Figaro gem: `bundle exec figaro install`
+6. Create an account with [Open Weather Map](https://home.openweathermap.org/users/sign_up) and request an API key
+7. Add your API key to the `application.yml` created by Figaro:
+  ```rb
+  OPEN_WEATHER_KEY: your_api_key
+  ```
 
-### Versions
+## Versions
 
 - Ruby 2.7.2
 
 - Rails 5.2.6
 
+## Important Gems
+Testing
+* [rspec-rails](https://github.com/rspec/rspec-rails)
+* [capybara](https://github.com/teamcapybara/capybara)
+* [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers)
+* [simplecov](https://github.com/simplecov-ruby/simplecov)
+* [webmock](https://github.com/bblimke/webmock)
+* [vcr](https://github.com/vcr/vcr)
+* [Bootstrap](https://github.com/twbs/bootstrap-rubygem)
+
+API Consumption
+* [faraday](https://github.com/lostisland/faraday)
+* [figaro](https://github.com/laserlemon/figaro)
 ## Running the tests
 
 Run `bundle exec rspec` to run the test suite
