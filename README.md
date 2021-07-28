@@ -4,7 +4,7 @@ This is the "frontend" repository for the Chorganize application. It is responsi
 
 ### About this Project
 
-Chorganize is an application in which users can create, complete, and monitor chores for their household. Each chore is weighted by difficulty to ensure fairness accross all the users of a household.
+Chorganize is an application in which users can create, complete, and monitor chores for their household. Each chore is weighted by difficulty to ensure fairness acros all the users of a household.
 
 ### Database Schema
 <!-- upload image here -->
@@ -12,7 +12,7 @@ Chorganize is an application in which users can create, complete, and monitor ch
 ### Getting Started
 
 These instructions will give you a copy of the project up and running on
-your local machine for development and testing purposes. 
+your local machine for development and testing purposes.
 
 ## Local Setup
 
