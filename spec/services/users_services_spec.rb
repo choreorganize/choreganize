@@ -1,13 +1,10 @@
 require 'rails_helper'
 
-
 RSpec.describe 'user service' do
-
   describe 'create_or_find_user' do
     describe ' happy path ' do
       it 'gets us info' do
-
-        user_info =  File.read('spec/fixtures/user_service/user_test.json')
+        user_info = File.read('spec/fixtures/user_service/user_test.json')
 
         stub_request(:post, "https://chorginize-api.herokuapp.com/api/v1/roommates?roommate%5Bemail%5D=test_email.com&roommate%5Bgoogle_id%5D=user_id_test&roommate%5Bname%5D=test_name&roommate%5Btoken%5D=token_test").
             with(
@@ -35,16 +32,11 @@ RSpec.describe 'user service' do
           token: 'token_test',
           house_id: 3
         }
-
+        # require 'pry'; binding.pry
         expect(response).to eq(expected_response)
       end
-
     end
-
     describe ' sad path ' do
     end
-
-
   end
-
 end

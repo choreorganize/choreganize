@@ -5,6 +5,7 @@ class UsersService
   end
 
   def self.create_or_find_user(user_info)
+    # require 'pry'; binding.pry
     response = connection.post("roommates") do |faraday|
       faraday.params['roommate'] = user_info
     end
