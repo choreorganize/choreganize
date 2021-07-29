@@ -33,6 +33,5 @@
 # Ignore application configuration
 /config/application.yml
 
-#ignore vcr
-/spec/vcr/
-vcr.log
+# Ignore VCR cassettes
+/spec/fixtures/vcr_cassettes/*
