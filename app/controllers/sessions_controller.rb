@@ -10,10 +10,8 @@ class SessionsController < ApplicationController
       token: auth_hash["credentials"]["token"]
     }
 
-    # make api call to back end.
-    # make service for users.
+    user = UsersService.create_or_find_user(send_to_back_end)
 
-    # user = {response from Back End, filtered through facade&poro}
     # session[:user_id] = user.id
 
     # redirect_to '/dashboard'
@@ -22,17 +20,3 @@ class SessionsController < ApplicationController
   end
 
 end
-
-
-# private
-# def auth_hash
-#  request.env['omniauth.auth']
-# end
-
-# def user_attributes
-#  {
-#     google_id: auth_hash["uid"],
-#     email: auth_hash["info"]["email"],
-#     token: auth_hash["credentials"]["token"]
-#  }
-# end
