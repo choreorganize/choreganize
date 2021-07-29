@@ -1,4 +1,3 @@
-#blanklinetoseechangesandagain
 language: ruby
 rbenv:
 - 2.7.2
@@ -9,8 +8,9 @@ script:
 - bundle exec rspec
 deploy:
   provider: heroku
-  api_key:
   app: choreganizer
   run: rails db:migrate
   on:
     all_branches: true
+  api_key:
+    secure: t5013EKN8qxd4oUaRTPSKtK3eB+baFn7SXfUBWay0V5rN/6pfhE5Tk95C385o8RJm3h3rwTQearcF+Afi6eEBoYV9YlD4ARpcZU7lC5dGIhZc5We1Ie6FTQ283/LFwJRcDgzB4UOlznIJcX/7cztaVuhJG23t5D1iZt+pXkmod8KG9rqrFaW/D6y2urggHbk7njRUBnQP1FWf6E4eRgA65Wf+ZuzB1nIPPEe7EsjElr7pd3BvBeKZGnTZLKP4Wt7ylM+vQrxBip8Yz8rnt+8+LtFkaH+OuB6ghyWrai16NBQJhThoUppZvWjg4u2RDMkO8n8711V+9lYfTXWb/QoKaMPE+EIe5TJozE0hBGhXnEtQSYMyp4kB/syGq8dxsvfzXEs9JXseIer49CoXTpq4iYkgn4WnlGgd3NoZRsee5HsoVRW6qjOeEZkYp5C/kZpOJEpQs36fYznTTedWlJ/57ymFvPQ2OIp2CyqMwIAZsT2jxZHO9sU2FRfNIxEKbDa6htsZ/XoPgb4BKPd6u+RNYqKscMVvr/3BjBjP4C5j5LaT1bgYcfxzc410H8hvLZf0qJxHhuh1R9lXFU+BzxWMeZ2nV9vucME7VkgenC3oz2upm93gYQjekHrij2hBuAQ/mstFLS1vv2ga3iis82f0n7wFrELdE3KEYvT0ElG23w=
