@@ -1,0 +1,7 @@
+{
+    "name": "test_name",
+    "email": "test_email.com",
+    "google_id": "user_id_test",
+    "token": "token_test",
+    "house_id": 3
+}
