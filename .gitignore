@@ -25,6 +25,14 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/coverage
+
+# Ignore test coverage
+/coverage/*
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore VCR cassettes
+/spec/fixtures/vcr_cassettes/*
+
