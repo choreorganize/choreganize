@@ -8,7 +8,7 @@ script:
 - bundle exec rspec
 deploy:
   provider: heroku
-  app: choreganizer
+  app: choreganize
   run: rails db:migrate
   on:
     all_branches: true
