@@ -35,3 +35,4 @@
 
 # Ignore VCR cassettes
 /spec/fixtures/vcr_cassettes/*
+
