@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def create
     auth_hash = request.env['omniauth.auth']
-    send_to_back_end = {
+    user_info = {
       roommate:
       {
         name: auth_hash['info']['name'],
@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         token: auth_hash['credentials']['token']
       }
     }
-    user = UsersService.create_or_find_user(send_to_back_end)
+    user = UsersService.create_or_find_user(user_info)
     session[:user_id] = user.id
     redirect_to '/dashboard'
   end
