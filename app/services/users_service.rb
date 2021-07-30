@@ -1,7 +1,7 @@
 class UsersService
 
   def self.connection
-    Faraday.new('https://chorginize-api.herokuapp.com/api/v1/')
+    Faraday.new('https://choreganize-api.herokuapp.com/api/v1/')
   end
 
   def self.create_or_find_user(user_info)
