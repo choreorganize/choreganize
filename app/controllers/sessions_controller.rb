@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
     }
 
     user = UsersService.create_or_find_user(user_info)
-    # require 'pry'; binding.pry
+    # make poro & facade
     # session[:user_id] = user.id
-    # redirect_to '/dashboard'
+    redirect_to '/dashboard'
   end
 end
