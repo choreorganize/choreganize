@@ -11,9 +11,9 @@ class SessionsController < ApplicationController
       }
     }
 
-    user = UsersService.create_or_find_user(user_info)
-    # make poro & facade
-    # session[:user_id] = user.id
+    user = UserFacade.user(user_info)
+    session[:user_id] = user.google_id
+    flash[:success] = "Welcome, #{user.name}!"
     redirect_to '/dashboard'
   end
 end
