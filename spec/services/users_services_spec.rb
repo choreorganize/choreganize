@@ -8,7 +8,8 @@ RSpec.describe 'user service' do
 
         stub_request(:post, 'https://choreganize-api.herokuapp.com/api/v1/roommates')
           .with(
-            body: { '{"roommate":{"name":"Moe deGrasse Tyson","email":"cutthatgrass@ex.com","google_id":"456","token":"1234567890"}}' => nil },
+            body: { 'roommate' => { 'email' => 'cutthatgrass@ex.com', 'google_id' => '456', 'name' => 'Moe deGrasse Tyson',
+                                    'token' => '1234567890' } },
             headers: {
               'Accept' => '*/*',
               'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
