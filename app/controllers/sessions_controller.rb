@@ -10,8 +10,10 @@ class SessionsController < ApplicationController
         token: auth_hash['credentials']['token']
       }
     }
+
     user = UsersService.create_or_find_user(user_info)
-    session[:user_id] = user.id
-    redirect_to '/dashboard'
+    # require 'pry'; binding.pry
+    # session[:user_id] = user.id
+    # redirect_to '/dashboard'
   end
 end
