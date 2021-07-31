@@ -4,8 +4,7 @@ class UsersService
   end
 
   def self.create_or_find_user(user_info)
-    response = connection.post('/api/v1/roommates', user_info.to_json)
-    data = JSON.parse(response.body, symbolize_names: true)
-    # require 'pry'; binding.pry
+    response = connection.post('/api/v1/roommates', user_info)
+    JSON.parse(response.body, symbolize_names: true)
   end
 end
