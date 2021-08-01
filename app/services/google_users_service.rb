@@ -1,4 +1,4 @@
-class UsersService
+class GoogleUsersService
   def self.connection
     Faraday.new('https://choreganize-api.herokuapp.com/')
   end

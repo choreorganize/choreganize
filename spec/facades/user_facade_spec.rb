@@ -25,7 +25,7 @@ RSpec.describe 'UserFacade' do
         token: auth_hash['credentials']['token']
       }
     }
-    facade = UserFacade.user(user_info)
+    facade = GoogleUserFacade.user(user_info)
 
     expect(facade).to be_an(GoogleUser)
     expect(facade.email).to eq('cutthatgrass@ex.com')
