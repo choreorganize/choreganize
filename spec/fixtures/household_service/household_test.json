@@ -1,0 +1,11 @@
+{
+  "data": {
+    "id": "1",
+    "type": "household",
+    "attributes": {
+      "address": "123 Main Street",
+      "city": "Anytown",
+      "state": "CO"
+    }
+  }
+}
