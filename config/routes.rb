@@ -3,10 +3,14 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get '/auth/:provider/callback', to: 'sessions#create'
-  namespace :user do
-    resources :dashboard, only: :show
-  end
-  get '/dashboard', to: 'dashboard#show'
 
-  resources :households, only: %i[new create]
+  resources :dashboard, only: :show, as: 'user_dashboard'
+
+  resources :households, only: %i[new create show] do
+    resources :chores, only: %i[new create show]
+  end
+
+  post '/', to: 'sessions#create'
+
+  delete '/logout', to: 'sessions#destroy'
 end
