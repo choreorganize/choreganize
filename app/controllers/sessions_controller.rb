@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate_user
+
   def create
     auth_hash = request.env['omniauth.auth']
     user_info = {
@@ -13,7 +15,7 @@ class SessionsController < ApplicationController
     user = GoogleUserFacade.user(user_info)
     session[:user_id] = user.google_id
     flash[:success] = "Welcome, #{user.name}!"
-    redirect_to '/dashboard'
+    redirect_to '/user/dashboard'
   end
 end
 

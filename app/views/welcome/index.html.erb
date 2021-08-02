@@ -1,1 +1,23 @@
-<%= button_to "Login", "/auth/google_oauth2?#{ENV['GOOLGE_CLIENT_ID']}", method: :get %>
+<div
+  class="p-5 text-center bg-image"
+  style="
+    background-image: url('https://image.freepik.com/free-photo/neat-desktop-with-office-appliances_23-2147833239.jpg');
+    height: 175px;
+  "
+>
+  <div class="mask" >
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="text-green">
+        <br><br><br>
+        <h1 class="mb-3">CHOREganize</h1>
+        <br><p> Organizing is no longer a chore with the Choreganize app. <br> Create
+        your household, invite roommates, add & claim chores.  Done!
+        </p><br><br><br><br>
+
+        <%= link_to 'Sign in with Google', '/auth/google_oauth2' %><br><br>
+
+        <%= button_to "Login", "/auth/google_oauth2?#{ENV['GOOLGE_CLIENT_ID']}", method: :get %>
+      </div>
+    </div>
+  </div>
+</div>

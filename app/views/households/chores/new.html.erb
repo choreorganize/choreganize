@@ -1,0 +1,14 @@
+<div class="container" style="width: 30%">
+  <div class="col-sm", style='padding-left: 25px'>
+    <br><h2>Create a New Chore</h2><br>
+    <%= bootstrap_form_with(model: @chore, url: household_chores, local: true) do |f| %>
+      <%= f.hidden_field :household_id, value: :household_id %>
+      <%= f.text_field :task_name %>
+      <%= f.text_area :description %>
+      <%= f.select :weight, [["Simple", 1], ["Medium", 2], ["Hard", 3]] %>
+      <%= f.select :weight, [["Weekly", 1], ["Bi-Monthly", 2], ["Monthly", 3]] %>
+      <%= f.check_box :outdoor %>
+      <%= f.submit 'Enter Chore' %>
+    <% end %>
+  </div>
+</div>
