@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#create'
 
-  resources :dashboard, only: :show, as: 'user_dashboard'
+  resources :dashboard, only: :index, as: 'user_dashboard'
 
   resources :households, only: %i[new create show] do
     resources :chores, only: %i[new create show]
