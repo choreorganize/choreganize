@@ -1,0 +1,6 @@
+<%= render partial: 'partials/navbar' %><br>
+
+<h1><%= @user.name.split.first %>'s Dashboard</h1>
+
+<br><br><br><br><br><br>
+<%= button_to "Log out", '/logout', method: :delete %>
