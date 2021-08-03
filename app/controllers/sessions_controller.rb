@@ -15,12 +15,11 @@ class SessionsController < ApplicationController
     user = GoogleUserFacade.user(user_info)
     session[:user_id] = user.google_id
     session[:user] = user
-    require 'pry'; binding.pry
     if user.nil?
       flash[:error] = "Sorry, sign in not successful."
       redirect_to root_path
     else
-      flash[:success] = "Welcome #{user.name.split.first}!"
+      flash[:success] = "Welcome #{user.name}!"
       redirect_to user_dashboard_index_path
     end
   end
