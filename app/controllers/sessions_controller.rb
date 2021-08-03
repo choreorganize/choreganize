@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         token: auth_hash['credentials']['token']
       }
     }
-    user = UserFacade.user(user_info)
+    user = GoogleUserFacade.user(user_info)
     session[:user_id] = user.google_id
     flash[:success] = "Welcome, #{user.name}!"
     redirect_to '/dashboard'

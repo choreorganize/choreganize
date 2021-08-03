@@ -26,7 +26,7 @@ RSpec.describe 'user service' do
           token: '1234567890'
         } }
 
-        response = UsersService.create_or_find_user(send_to_back_end)
+        response = GoogleUsersService.create_or_find_user(send_to_back_end)
 
         expect(response).to be_a(Hash)
         expect(response[:data]).to have_key(:id)
