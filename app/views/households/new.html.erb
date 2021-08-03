@@ -6,15 +6,15 @@
   <div class='createHousehold' %>
   <%= form_with url: households_path, method: :post, local: true do |form| %>
     <%= form.label :address, 'Address' %>
-    <%= form.text_field :address %>
+    <%= form.text_field :address, required: :true %>
     <%= form.label :city, 'City' %>
-    <%= form.text_field :city %>
+    <%= form.text_field :city, required: :true %>
     <%= form.label :state, 'State' %>
-    <%= form.text_field :state %>
+    <%= form.text_field :state, required: :true %>
     <%= form.label :password, 'Password' %>
-    <%= form.text_field :password %>
+    <%= form.text_field :password, required: :true %>
     <%= form.label :password_confirmation, 'Confirm Your Password' %>
-    <%= form.text_field :password_confirmation %>
+    <%= form.text_field :password_confirmation, required: :true %>
     <%= form.submit 'Submit' %>
   <% end %>
   </div>
