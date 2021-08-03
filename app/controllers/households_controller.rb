@@ -17,4 +17,8 @@ class HouseholdsController < ApplicationController
     flash[:success] = 'House Created!'
     redirect_to user_dashboard_index_path
   end
+
+  def show
+
+  end 
 end
