@@ -257,6 +257,9 @@
           null,
           1,
           null,
+          null,
+          1,
+          null,
           1,
           1,
           null,
@@ -277,8 +280,43 @@
           1,
           null
         ]
+      },
+      "/Users/m3/choreganize/app/controllers/welcome_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/m3/choreganize/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/m3/choreganize/app/controllers/dashboard_controller.rb": {
+        "lines": [
+          1,
+          1,
+          0,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1627970836
+    "timestamp": 1627972368
   }
 }

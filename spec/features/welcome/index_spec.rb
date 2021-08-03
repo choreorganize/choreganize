@@ -6,7 +6,7 @@ RSpec.describe 'Welcome Page' do
       # stub_google_oauth2
       # @user = create(:user)
       # visit root_path
-
+      #
       # click_button "Sign in with Google"
       # expect(current_path).to eq(user_dashboard_index_path)
       # expect(page).to have_content("Welcome")
@@ -15,7 +15,7 @@ RSpec.describe 'Welcome Page' do
   end
 
   context "sad path" do
-    it 'has a button to Sign in with Google that fails to login' do
+    it 'has a button to Sign in with Google that can fail to login' do
       # stub_google_oauth2
       # @user = create(:user)
       # visit root_path
