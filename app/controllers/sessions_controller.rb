@@ -14,9 +14,19 @@ class SessionsController < ApplicationController
     }
     user = GoogleUserFacade.user(user_info)
     session[:user_id] = user.google_id
+    session[:user] = user
+    # session[:name] = user.name
+    # session[:email] = user.email
+    # require 'pry'; binding.pry
 
     flash[:success] = "Welcome, #{user.name}!"
-    redirect_to user_dashboard_path
+    redirect_to dashboard_index_path
+  end
+
+  def destroy
+    session[:user] = nil
+    session[:user_id] = nil
+    redirect_to root_path
   end
 end
 
