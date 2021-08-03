@@ -2,11 +2,15 @@ require 'rails_helper'
 
 RSpec.describe 'welcome page' do
   before(:each)do
-    @user = User.create(email: 'test123@xyz.com', password: 'viewparty')
-    visit welcome_path
+    # @user = User.create(email: 'test123@xyz.com', password: 'viewparty')
+    visit root_path
   end
 
-  it 'as a registered user, I can log in with correct credentials' do
+  it 'has a link to sign in with Google' do
+    click_link "Sign in with Google"
+    expect(current_path).to eq(dashboard_index_path)
+
+
     expect(find('form')).to have_content('Email')
     expect(find('form')).to have_content('Password')
 
