@@ -1,7 +1,13 @@
 {
-    "name": "test_name",
-    "email": "test_email.com",
-    "google_id": "user_id_test",
-    "token": "token_test",
-    "house_id": 3
+    "data": {
+        "id": "1",
+        "type": "roommates",
+        "attributes": {
+            "name": "Moe deGrasse Tyson",
+            "household_id": "nil",
+            "email": "cutthatgrass@ex.com",
+            "google_id": "456",
+            "token": "1234567890"
+        }
+    }
 }
