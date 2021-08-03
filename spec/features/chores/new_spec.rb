@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Chore New Page' do
-  it 'creates a new chore' do
+  xit 'creates a new chore' do
     json_response = File.read('spec/fixtures/chore_service/chore_test.json')
 
     stub_request(:post, 'https://choreganize-api.herokuapp.com/api/v1/household')
