@@ -113,7 +113,9 @@ RSpec.describe 'Chore show Page' do
 
     visit "/households/#{house.id}/chores/#{chore1.id}"
     # save_and_open_page
-    # expect(current_path).to eq(user_dashboard_path)
-    expect(page).to have_content('1')
+    expect(page).to have_content(chore1.name)
+    expect(page).to have_content(chore1.description)
+    expect(page).to have_content(chore1.weight)
+    expect(page).to have_content(chore1.frequency)
   end
 end
