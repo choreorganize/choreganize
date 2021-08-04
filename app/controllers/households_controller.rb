@@ -23,7 +23,8 @@ class HouseholdsController < ApplicationController
 
     if current_user.household_id == params[:id].to_i
       @household = HouseholdsFacade.get_houshold_by_id(params[:id])
-      # binding.pry
+    else
+      redirect_to user_dashboard
     end
 
 
