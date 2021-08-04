@@ -12,5 +12,8 @@ RSpec.describe Household do
     expect(house.address).to eq(attributes[:address])
     expect(house.city).to eq(attributes[:city])
     expect(house.state).to eq(attributes[:state])
+    expect(house.roommates).to eq(attributes[:roommates])
+    expect(house.chores).to eq(attributes[:chores])
+    expect(house.weather_forecast).to eq(attributes[:weather_forecast])
   end
 end

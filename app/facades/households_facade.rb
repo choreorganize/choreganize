@@ -7,7 +7,7 @@ class HouseholdsFacade
 
 
   def self.get_houshold_by_id(id)
-    HouseholdService.
-
-
+    household = HouseholdService.fetch_houshold(id)
+    Household.new(household)
+  end 
 end
