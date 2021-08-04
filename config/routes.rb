@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources :dashboard, only: :index, as: 'user_dashboard'
 
   resources :households, only: %i[new create show] do
-    resources :chores, only: %i[new create show]
+    resources :chores, only: %i[new create show update]
   end
 end

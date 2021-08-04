@@ -1,0 +1,75 @@
+{
+  "data": {
+      "id": "1",
+      "type": "households",
+      "attributes": {
+          "address": "123 Main Street",
+          "city": "Anytown",
+          "state": "CO",
+          "roommates": [],
+          "chores": [],
+          "weather_forecast": {
+              "id": null,
+              "current_weather": {
+                  "datetime": "2021-08-04 16:53:01 +0000",
+                  "sunrise": "12:11",
+                  "sunset": "02:08",
+                  "temperature": 296.09,
+                  "feels_like": 295.56,
+                  "humidity": 43,
+                  "uvi": 8.59,
+                  "visibility": 10000,
+                  "conditions": "clear sky",
+                  "icon": "01d"
+              },
+              "daily_weather": [
+                  {
+                      "date": "2021-08-04",
+                      "sunrise": "12:11",
+                      "sunset": "02:08",
+                      "max_temp": 298.85,
+                      "min_temp": 283.42,
+                      "conditions": "clear sky",
+                      "icon": "01d"
+                  },
+                  {
+                      "date": "2021-08-05",
+                      "sunrise": "12:12",
+                      "sunset": "02:07",
+                      "max_temp": 299.58,
+                      "min_temp": 284.26,
+                      "conditions": "moderate rain",
+                      "icon": "10d"
+                  },
+                  {
+                      "date": "2021-08-06",
+                      "sunrise": "12:13",
+                      "sunset": "02:06",
+                      "max_temp": 301.55,
+                      "min_temp": 285.15,
+                      "conditions": "few clouds",
+                      "icon": "02d"
+                  },
+                  {
+                      "date": "2021-08-07",
+                      "sunrise": "12:14",
+                      "sunset": "02:05",
+                      "max_temp": 300.28,
+                      "min_temp": 286.8,
+                      "conditions": "clear sky",
+                      "icon": "01d"
+                  },
+                  {
+                      "date": "2021-08-08",
+                      "sunrise": "12:15",
+                      "sunset": "02:04",
+                      "max_temp": 301.54,
+                      "min_temp": 284.38,
+                      "conditions": "clear sky",
+                      "icon": "01d"
+                  }
+              ]
+          }
+      }
+  }
+}
