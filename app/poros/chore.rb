@@ -4,7 +4,8 @@ class Chore
               :description,
               :weight,
               :frequency,
-              :outdoor
+              :outdoor,
+              :id
 
   def initialize(attributes)
     @household_id = attributes[:household_id]
@@ -13,5 +14,6 @@ class Chore
     @weight = attributes[:weight]
     @frequency = attributes[:frequency]
     @outdoor = attributes[:outdoor]
+    @id = attributes[:id]#<~~~probably not going to work
   end
 end
