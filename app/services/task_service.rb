@@ -1,18 +1,25 @@
 class TaskService
 
-  def self.create_task(task_name, user)
-    new.post_api("/tasks/v1/users/@me/lists", task_name, user)
+  def self.create_task(task_name, user, task_list)
+    new.post_api("/tasks/v1/lists/#{task_list}/tasks", task_name, task_list, user)
   end
 
-  def post_api(path, task_name, user)
-    resp = conn("https://tasks.googleapis.com", user).post(path) do |req|
-      # req.header['Authorization'] = "Bearer #{roommate.token}" 
-      # just headers getting passed but not really authorized
-      # req.headers['Authorization'] = "Bearer #{user[:credentials][:token]}"
-      req.body = { 
-        title: task_name
-      }
+  def self.get_list(user)
+    new.request_api("/tasks/v1/users/@me/lists", user)
+  end
+
+  def request_api(path, user)
+    resp = connect("https://tasks.googleapis.com", user).get(path)
+    parse_json(resp)
+  end 
+
+  def post_api(path, task_name, task_list, user)
+    resp = Faraday.post("https://tasks.googleapis.com/tasks/v1/lists/#{task_list}/tasks") do |faraday|
+      faraday.headers['Authorization'] = "Bearer #{user.token}"
+      faraday.headers['Content-Type'] = "application/json"
+      faraday.body = { "title": task_name }.to_json 
     end
+
     parse_json(resp)
   end
 
@@ -20,13 +27,10 @@ class TaskService
     JSON.parse(response.body, symbolize_names: true) 
   end
 
-  def conn(url, user)
-    #Faraday.new(url)
-    Faraday.new(url) do
-      # adding in the authentication step 
-      # what have you authorized in postman that you haven't here
-      conn.authorization :Bearer, user.token
+  def connect(url, user)
+    Faraday.new(url) do |faraday|
+      faraday.headers['Authorization'] = "Bearer #{user.token}"
+      faraday.adapter Faraday.default_adapter
     end
-    require 'pry'; binding.pry
   end
 end
