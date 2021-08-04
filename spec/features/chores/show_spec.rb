@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Chore show Page' do
-  it 'shows a chores attributes' do
+  before :each do
     json_response = File.read('spec/fixtures/household_service/weather_test.json')
     stub_request(:get, 'https://choreganize-api.herokuapp.com/api/v1/household/1')
       .with(
@@ -13,7 +13,7 @@ RSpec.describe 'Chore show Page' do
       )
       .to_return(status: 200, body: json_response, headers: {})
 
-    chore1 = Chore.new({
+    @chore1 = Chore.new({
                          id: 1,
                          task_name: 'Mow',
                          household_id: 123,
@@ -23,7 +23,7 @@ RSpec.describe 'Chore show Page' do
                          outdoor: true
                        })
 
-    chore2 = Chore.new({
+    @chore2 = Chore.new({
                          id: 2,
                          task_name: 'Dont Mow',
                          household_id: 123,
@@ -42,7 +42,7 @@ RSpec.describe 'Chore show Page' do
           "city": 'Anytown',
           "state": 'CO',
           "roommates": [],
-          "chores": [chore1, chore2],
+          "chores": [@chore1, @chore2],
           "weather_forecast": {
             "id": nil,
             "current_weather": {
@@ -109,7 +109,7 @@ RSpec.describe 'Chore show Page' do
       }
     }
 
-    house = Household.new(attributes)
+    @house = Household.new(attributes)
 
     @current_user = GoogleUser.new({
                                      google_id: '789',
@@ -117,18 +117,31 @@ RSpec.describe 'Chore show Page' do
                                      email: 'sleepy1@ex.com',
                                      household_id: 1,
                                      token: 'longgooletokenhere',
-                                     incomplete_chores: [chore1, chore2],
+                                     incomplete_chores: [@chore1, @chore2],
                                      completed_chore: []
                                    })
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
+  end
+  it 'shows a chores attributes' do
+    visit "/households/#{@house.id}/chores/#{@chore1.id}"
 
-    visit "/households/#{house.id}/chores/#{chore1.id}"
-
-    expect(page).to have_content(chore1.task_name)
-    expect(page).to have_content(chore1.description)
-    expect(page).to have_content(chore1.weight)
-    expect(page).to have_content(chore1.frequency)
-    expect(page).to have_content(chore1.location)
+    expect(page).to have_content(@chore1.task_name)
+    expect(page).to have_content(@chore1.description)
+    expect(page).to have_content(@chore1.weight)
+    expect(page).to have_content(@chore1.frequency)
+    expect(page).to have_content(@chore1.location)
     expect(page).to have_content('Weather Forecast')
+  end
+  it 'does not show forecast if chore is indoors' do
+    visit "/households/#{@house.id}/chores/#{@chore2.id}"
+
+    expect(page).to_not have_content('Weather Forecast')
+  end
+  xit 'has a button to update a chore' do
+    visit "/households/#{@house.id}/chores/#{@chore2.id}"
+
+    click_button 'Update Chore'
+
+    expect(current_path).to eq()
   end
 end
