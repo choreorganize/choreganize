@@ -1,11 +1,15 @@
 <h1><%= @chore.task_name %></h1>
 
+<%= form_with url: "/households/#{@house.id}/chores/#{@chore.id}", method: :patch, local: true do |form| %>
+  <%= form.submit 'Update Chore' %>
+<% end %>
+
 <% if @chore.location == 'Outdoor' %>
   <h2>Weather Forecast</h2>
   <% @daily_forecast.each do |day| %>
     <ul>
       <li><%= day[:date] %></li>
-      <li><%= day[:max_temp] %></li>
+      <li><%= day[:max_temp] %></li>''
       <li><%= day[:min_temp] %></li>
       <li><%= day[:conditions] %></li>
     </ul>
