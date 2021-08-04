@@ -14,9 +14,9 @@ RSpec.describe 'TasksFacade' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(current_user)
     task_name = "vacuum"
-    require 'pry'; binding.pry
+
     task = TasksFacade.post_task(task_name, @current_user)
-    require 'pry'; binding.pry
+
 
   end
 end

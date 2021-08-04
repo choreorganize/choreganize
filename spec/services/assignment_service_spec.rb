@@ -85,7 +85,7 @@ RSpec.describe "Assignment API" do
                         } }
 
       response = AssignmentService.create_assignment(assignment_info)
-      require 'pry'; binding.pry
+   
       expect(response).to eq(Hash)
     end
   end

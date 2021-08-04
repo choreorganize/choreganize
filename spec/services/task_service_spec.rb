@@ -32,7 +32,7 @@ RSpec.describe TaskService do
         
 
         response = TaskService.create_task("Mow the lawn", current_user)
-        require 'pry'; binding.pry
+    
         expect(response).to be_a(Hash)
       end
     end
