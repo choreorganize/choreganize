@@ -21,10 +21,13 @@ class HouseholdsController < ApplicationController
 
   def show
 
-    current_user.household_id
+    if current_user.household_id == params[:id].to_i
+      @household = HouseholdsFacade.get_houshold_by_id(params[:id])
+      # binding.pry
+    end
 
-    binding.pry
-    HouseholdsFacade.get_houshold_by_id(params[:id])
+
+
   end
 
 

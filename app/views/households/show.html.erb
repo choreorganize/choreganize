@@ -1,1 +1,5 @@
-test 
+
+<% "list all chores" %>
+<% @household.chores.each  do |chore|%>
+  <%= chore[:task_name] %> <br>
+<% end %>

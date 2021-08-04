@@ -43,13 +43,12 @@ RSpec.describe 'houshold show page' do
 
       visit "households/#{household_id}"
 
-      # save_and_open_page
+      save_and_open_page
 
       # within('.unassighned_chores') do
-      #   expect(page).to have_content()
-      #   expect(page).to have_content()
-      #   expect(page).to have_content()
-      #   expect(page).to have_content()
+        expect(page).to have_content("mow yard") 
+        expect(page).to have_content("wash dishes")
+        expect(page).to have_content("mop floor")
       # end
     end
     describe 'chores have link to chore show page' do
