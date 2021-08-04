@@ -2,8 +2,8 @@
 
 <h1><%= current_user.name.split.first %>'s Dashboard</h1>
 
-<h2>Incomplete Chores</h2>
 <ul class="incompleteChores">
+  <h2>Incomplete Chores</h2>
   <% if @incomplete_chores.nil? %>
     <p>You have no incompleted chores!🎉</p>
   <% else %>
@@ -21,8 +21,8 @@
   <% end %>
 </ul>
 
-<h2>Complete Chores</h2>
 <ul class="completedChores">
+  <h2>Complete Chores</h2>
   <% if @completed_chores.nil? %>
     <p>You have no completed chores😭.</p>
   <% else %>
