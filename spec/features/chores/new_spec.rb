@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Chore New Page' do
-  xit 'creates a new chore' do
+  it 'creates a new chore' do
     json_response = File.read('spec/fixtures/chore_service/chore_test.json')
 
     stub_request(:post, 'https://choreganize-api.herokuapp.com/api/v1/household')
@@ -28,7 +28,7 @@ RSpec.describe 'Chore New Page' do
 
       click_button 'Submit'
     end
-    # expect(current_path).to eq(user_dashboard_path)
+    expect(current_path).to eq(household_path)
     expect(page).to have_content('Chore Created!')
   end
 end

@@ -1,9 +1,9 @@
-class Households::ChoresController < ApplicationController
+class ChoresController < ApplicationController
   def new
-
   end
 
   def create
+    require "pry"; binding.pry
     # @household = Household.find(params[:household_id])
     chore_info = {
       chore:
@@ -19,5 +19,6 @@ class Households::ChoresController < ApplicationController
 
     ChoresFacade.create_chore(chore_info)
     flash[:success] = 'Chore Created!'
+    redirect_to household_path
   end
 end
