@@ -6,7 +6,7 @@ RSpec.describe 'HouseholdsFacade' do
 
     stub_request(:post, 'https://choreganize-api.herokuapp.com/api/v1/household')
       .with(
-        body: { 'household' => { 'address' => '123 Main Street', 'city' => 'Anytown', 'password' => 'MoreCowBell123*',
+        body: { 'household' => { 'address' => '9385 Dooley Plains', 'city' => 'denver', 'password' => 'MoreCowBell123*',
                                  'password_confirmation' => 'MoreCowBell123*', 'state' => 'CO' } },
         headers: {
           'Accept' => '*/*',
@@ -19,8 +19,8 @@ RSpec.describe 'HouseholdsFacade' do
     household_info = {
       household:
       {
-        address: '123 Main Street',
-        city: 'Anytown',
+        address: '9385 Dooley Plains',
+        city: 'denver',
         state: 'CO',
         password: 'MoreCowBell123*',
         password_confirmation: 'MoreCowBell123*'
@@ -29,8 +29,8 @@ RSpec.describe 'HouseholdsFacade' do
     facade = HouseholdsFacade.create_household(household_info)
 
     expect(facade).to be_an(Household)
-    expect(facade.address).to eq('123 Main Street')
-    expect(facade.city).to eq('Anytown')
-    expect(facade.state).to eq('CO')
+    expect(facade.address).to eq('9385 Dooley Plains')
+    expect(facade.city).to eq('denver')
+    expect(facade.state).to eq('co')
   end
 end
