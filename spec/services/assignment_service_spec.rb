@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Assignment API" do
   describe 'create an assignment' do
-    describe '::create_task', :vcr do
-      it 'creates amd assignment' do 
+    describe '::create_assignment', :vcr do
+      it 'creates an assignment' do 
         user_params = { roommate: {
         name: 'Suzie Kim',
         email: 'suziekim.dev@gmail.com',
@@ -85,8 +85,17 @@ RSpec.describe "Assignment API" do
                         } }
 
         response = AssignmentService.create_assignment(assignment_info)
-   
-        expect(response).to eq(Hash)
+       
+        expect(response[:data]).to have_key(:attributes)
+        expect(response[:data]).to have_key(:id)
+        expect(response[:data]).to have_key(:relationships)
+        expect(response[:data][:attributes]).to have_key(:chore_id)  
+        expect(response[:data][:attributes]).to have_key(:completed)
+        expect(response[:data][:attributes]).to have_key(:roommate_id)
+
+        expect(response[:data][:attributes][:chore_id]).to eq(chore.id)
+        expect(response[:data][:attributes][:completed]).to eq(true)
+        expect(response[:data][:attributes][:roommate_id]).to eq(roommate.id.to_i)
       end
     end
   end
