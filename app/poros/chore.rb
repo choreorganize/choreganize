@@ -16,4 +16,12 @@ class Chore
     @frequency = attributes[:frequency]
     @outdoor = attributes[:outdoor]
   end
+
+  def location
+    if @outdoor == true
+      'Outdoor'
+    else
+      'Indoor'
+    end
+  end
 end

@@ -306,4 +306,27 @@ RSpec.describe "User Dashboard" do
       end
     end
   end
+
+  describe "Sad Path: No household" do
+    it "doest show chores if household nil" do
+      @current_user = GoogleUser.new({
+                                     google_id: '123',
+                                     name: 'Anita Nappe',
+                                     email: 'sleepy1@ex.com',
+                                     household_id: nil,
+                                     token: 'longgooletokenhere',
+                                     incomplete_chores: [],
+                                     completed_chores: []
+                                   })
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
+
+      visit user_dashboard_index_path
+      expect(page).to have_content("Join or create a hosuehold")
+      expect(page).to have_link("Create A Household")
+      click_link "Create A Household"
+      expect(current_path).to eq(new_household_path)
+      expect(page).not_to have_content("Incomplete Chores")
+      expect(page).not_to have_content("Complete Chores")
+    end
+  end
 end
