@@ -14,6 +14,6 @@ class Chore
     @weight = attributes[:weight]
     @frequency = attributes[:frequency]
     @outdoor = attributes[:outdoor]
-    @id = attributes[:id]#<~~~probably not going to work
+    @id = attributes[:id]
   end
 end

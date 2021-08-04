@@ -9,8 +9,6 @@ class ChoresController < ApplicationController
                 else
                   'Indoor'
                 end
-
-    require 'pry'; binding.pry
   end
 end
 # GET /api/v1/household/:id
