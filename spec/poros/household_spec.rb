@@ -4,8 +4,11 @@ RSpec.describe Household do
   it 'it should build a Household PORO' do
     attributes = { address: '123 Main Street',
                    city: 'Anytown',
-                   state: 'CO'
-                  }
+                   state: 'CO',
+                   id: '1',
+                   roommates: [],
+                   chores: [],
+                   weather_forecast: {} }
 
     house = Household.new(attributes)
 
