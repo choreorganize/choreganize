@@ -6,7 +6,6 @@ class HouseholdsFacade
 
   def self.get_weather(household_id)
     house_data = HouseholdService.weather_data(household_id)
-    # require 'pry'; binding.pry
-    a = Household.new(house_data)
+    Household.new(house_data)
   end
 end
