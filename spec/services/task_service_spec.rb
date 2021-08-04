@@ -25,7 +25,8 @@ RSpec.describe TaskService do
         WebMock.allow_net_connect!
         
 
-        response = TaskService.create_task("Mow the lawn", user)
+        response = TaskService.create_task("Mow the lawn", current_user)
+        require 'pry'; binding.pry
         expect(response).to be_a(Hash)
       end
     end

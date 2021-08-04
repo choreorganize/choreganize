@@ -5,7 +5,7 @@ class TaskService
   end
 
   def post_api(path, task_name, user)
-    resp = conn("https://tasks.googleapis.com").post(path) do |req|
+    resp = conn("https://tasks.googleapis.com", user).post(path) do |req|
       # req.header['Authorization'] = "Bearer #{roommate.token}" 
       # just headers getting passed but not really authorized
       # req.headers['Authorization'] = "Bearer #{user[:credentials][:token]}"
@@ -25,7 +25,8 @@ class TaskService
     Faraday.new(url) do
       # adding in the authentication step 
       # what have you authorized in postman that you haven't here
-      conn.authorization :Bearer, session[:credentials][:token]
+      conn.authorization :Bearer, user.token
     end
+    require 'pry'; binding.pry
   end
 end
