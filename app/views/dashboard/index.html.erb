@@ -1,6 +1,44 @@
 <%= render partial: 'partials/navbar' %><br>
 
-<h1><%= @user.name.split.first %>'s Dashboard</h1>
+<h1><%= current_user.name.split.first %>'s Dashboard</h1>
+
+<h2>Incomplete Chores</h2>
+<ul class="incompleteChores">
+  <% if @incomplete_chores.nil? %>
+    <p>You have no incompleted chores!🎉</p>
+  <% else %>
+    <% @incomplete_chores.each do |incomplete_chore| %>
+      <li>Task Name: <%= incomplete_chore.task_name %></li>
+      <li>Description: <%= incomplete_chore.description %></li>
+      <li>Frequency: <%= incomplete_chore.frequency %></li>
+      <li>Weight: <%= incomplete_chore.weight %></li>
+      <% if incomplete_chore.outdoor == true %>
+        <li><%= 'Location: Outdoor' %></li>
+      <% else %>
+        <li><%= 'Location: Indoor' %></li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>
+
+<h2>Complete Chores</h2>
+<ul class="completedChores">
+  <% if @completed_chores.nil? %>
+    <p>You have no completed chores😭.</p>
+  <% else %>
+    <% @completed_chores.each do |completed_chore| %>
+      <li>Task Name: <%= completed_chore.task_name %></li>
+      <li>Description: <%= completed_chore.description %></li>
+      <li>Frequency: <%= completed_chore.frequency %></li>
+      <li>Weight: <%= completed_chore.weight %></li>
+      <% if completed_chore.outdoor == true %>
+        <li><%= 'Location: Outdoor' %></li>
+      <% else %>
+        <li><%= 'Location: Indoor' %></li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>
 
 <br><br><br><br><br><br>
 <%= button_to "Log out", '/logout', method: :delete %>
