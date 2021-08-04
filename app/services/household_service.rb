@@ -7,4 +7,10 @@ class HouseholdService
     response = connection.post('/api/v1/household', household_info)
     JSON.parse(response.body, symbolize_names: true)
   end
+
+  # def self.create_or_find_household(household_info)
+  #   response = connection.post("/api/v1/household/id", household_info)
+  #   JSON.parse(response.body, symbolize_names: true)
+  # end
+
 end

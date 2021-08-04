@@ -4,4 +4,10 @@ class HouseholdsFacade
     formatted = household_attributes[:data][:attributes]
     Household.new(formatted)
   end
+
+
+  def self.get_houshold_by_id(id)
+    HouseholdService.
+
+
 end
