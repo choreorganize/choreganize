@@ -1,0 +1,12 @@
+<h1><%= @chore.task_name %></h1>
+
+<% if @location == 'Outdoor' %>
+  <%= @weather_forecast %>
+<% end %>
+
+<ul>
+  <li>Description: <%= @chore.description %></li>
+  <li>Frequency: <%= @chore.frequency %></li>
+  <li>Weight: <%= @chore.weight %></li>
+  <li>Location: <% @location %></li>
+</ul>
