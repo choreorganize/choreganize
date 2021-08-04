@@ -8,7 +8,7 @@
     <p>You have no incompleted chores!🎉</p>
   <% else %>
     <% @incomplete_chores.each do |incomplete_chore| %>
-      <li>Task Name: <%= incomplete_chore.task_name %></li>
+      <li>Task Name: <%= link_to "#{incomplete_chore.task_name}", household_chore_path(incomplete_chore.household_id, incomplete_chore.id)%></li>
       <li>Description: <%= incomplete_chore.description %></li>
       <li>Frequency: <%= incomplete_chore.frequency %></li>
       <li>Weight: <%= incomplete_chore.weight %></li>
@@ -27,7 +27,7 @@
     <p>You have no completed chores😭.</p>
   <% else %>
     <% @completed_chores.each do |completed_chore| %>
-      <li>Task Name: <%= completed_chore.task_name %></li>
+      <li>Task Name: <%= link_to "#{completed_chore.task_name}", household_chore_path(completed_chore.household_id, completed_chore.id)%></li>
       <li>Description: <%= completed_chore.description %></li>
       <li>Frequency: <%= completed_chore.frequency %></li>
       <li>Weight: <%= completed_chore.weight %></li>

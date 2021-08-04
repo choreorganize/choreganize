@@ -1,5 +1,6 @@
 class GoogleUser
-  attr_reader :google_id,
+  attr_reader :id,
+              :google_id,
               :name,
               :email,
               :household_id,
@@ -8,6 +9,7 @@ class GoogleUser
               :completed_chores
 
   def initialize(attributes)
+    @id = attributes[:id]
     @google_id = attributes[:google_id]
     @name = attributes[:name]
     @email = attributes[:email]
