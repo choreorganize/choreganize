@@ -45,10 +45,20 @@ RSpec.describe "User Dashboard" do
                                    })
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
   end
-  describe "Displays to-do chores" do
-    it "shows chores that are incomplete_chores" do
+
+  describe "Happy Path: Displays all chores" do
+    it "shows all assigned chores" do
+      # @current_user = GoogleUser.new({
+      #                                google_id: '123',
+      #                                name: 'Anita Nappe',
+      #                                email: 'sleepy1@ex.com',
+      #                                household_id: 123,
+      #                                token: 'longgooletokenhere',
+      #                                incomplete_chores: [@chore1],
+      #                                completed_chores: [@chore2]
+      #                              })
+      # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
       visit user_dashboard_index_path
-      # save_and_open_page
       within(first('.incompleteChores')) do
         expect(page).to have_content("Incomplete Chores")
         expect(page).to have_content(@chore1.task_name)
@@ -78,6 +88,158 @@ RSpec.describe "User Dashboard" do
         expect(page).to have_content(@chore2.description)
         expect(page).to have_content(@chore2.frequency)
         expect(page).to have_content(@chore2.weight)
+
+        expect(page).not_to have_content(@chore3.task_name)
+        expect(page).not_to have_content(@chore3.description)
+        expect(page).not_to have_content(@chore3.frequency)
+        expect(page).not_to have_content(@chore3.weight)
+      end
+    end
+  end
+  describe "Displays to-do chores" do
+    xit "shows chores that are incomplete_chores" do
+      # @current_user = GoogleUser.new({
+      #                                google_id: '123',
+      #                                name: 'Anita Nappe',
+      #                                email: 'sleepy1@ex.com',
+      #                                household_id: 123,
+      #                                token: 'longgooletokenhere',
+      #                                incomplete_chores: [@chore1],
+      #                                completed_chores: []
+      #                              })
+      # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
+      visit user_dashboard_index_path
+      within(first('.incompleteChores')) do
+        expect(page).to have_content("Incomplete Chores")
+        expect(page).to have_content(@chore1.task_name)
+        expect(page).to have_content(@chore1.description)
+        expect(page).to have_content(@chore1.frequency)
+        expect(page).to have_content(@chore1.weight)
+
+        expect(page).not_to have_content(@chore2.task_name)
+        expect(page).not_to have_content(@chore2.description)
+        expect(page).not_to have_content(@chore2.frequency)
+        expect(page).not_to have_content(@chore2.weight)
+
+        expect(page).not_to have_content(@chore3.task_name)
+        expect(page).not_to have_content(@chore3.description)
+        expect(page).not_to have_content(@chore3.frequency)
+        expect(page).not_to have_content(@chore3.weight)
+      end
+
+      within(first('.completedChores')) do
+        expect(page).to have_content("Complete Chores")
+        expect(page).not_to have_content(@chore1.task_name)
+        expect(page).not_to have_content(@chore1.description)
+        expect(page).not_to have_content(@chore1.frequency)
+        expect(page).not_to have_content(@chore1.weight)
+
+        expect(page).not_to have_content(@chore2.task_name)
+        expect(page).not_to have_content(@chore2.description)
+        expect(page).not_to have_content(@chore2.frequency)
+        expect(page).not_to have_content(@chore2.weight)
+
+        expect(page).not_to have_content(@chore3.task_name)
+        expect(page).not_to have_content(@chore3.description)
+        expect(page).not_to have_content(@chore3.frequency)
+        expect(page).not_to have_content(@chore3.weight)
+      end
+    end
+  end
+
+  describe "Displays complete chores" do
+    xit "shows chores that are completed_chores" do
+      # @current_user = GoogleUser.new({
+      #                                google_id: '123',
+      #                                name: 'Anita Nappe',
+      #                                email: 'sleepy1@ex.com',
+      #                                household_id: 123,
+      #                                token: 'longgooletokenhere',
+      #                                incomplete_chores: [],
+      #                                completed_chores: [@chore2]
+      #                              })
+      # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
+      visit user_dashboard_index_path
+      within(first('.incompleteChores')) do
+        expect(page).to have_content("Incomplete Chores")
+        expect(page).not_to have_content(@chore1.task_name)
+        expect(page).not_to have_content(@chore1.description)
+        expect(page).not_to have_content(@chore1.frequency)
+        expect(page).not_to have_content(@chore1.weight)
+
+        expect(page).not_to have_content(@chore2.task_name)
+        expect(page).not_to have_content(@chore2.description)
+        expect(page).not_to have_content(@chore2.frequency)
+        expect(page).not_to have_content(@chore2.weight)
+
+        expect(page).not_to have_content(@chore3.task_name)
+        expect(page).not_to have_content(@chore3.description)
+        expect(page).not_to have_content(@chore3.frequency)
+        expect(page).not_to have_content(@chore3.weight)
+      end
+
+      within(first('.completedChores')) do
+        expect(page).to have_content("Complete Chores")
+        expect(page).not_to have_content(@chore1.task_name)
+        expect(page).not_to have_content(@chore1.description)
+        expect(page).not_to have_content(@chore1.frequency)
+        expect(page).not_to have_content(@chore1.weight)
+
+        expect(page).to have_content(@chore2.task_name)
+        expect(page).to have_content(@chore2.description)
+        expect(page).to have_content(@chore2.frequency)
+        expect(page).to have_content(@chore2.weight)
+
+        expect(page).not_to have_content(@chore3.task_name)
+        expect(page).not_to have_content(@chore3.description)
+        expect(page).not_to have_content(@chore3.frequency)
+        expect(page).not_to have_content(@chore3.weight)
+      end
+    end
+  end
+
+  describe "Sad Path: Displays no chores" do
+    xit "doest show chores that are not assigned" do
+      # @current_user = GoogleUser.new({
+      #                                google_id: '123',
+      #                                name: 'Anita Nappe',
+      #                                email: 'sleepy1@ex.com',
+      #                                household_id: 123,
+      #                                token: 'longgooletokenhere',
+      #                                incomplete_chores: [],
+      #                                completed_chores: []
+      #                              })
+      # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
+      visit user_dashboard_index_path
+      within(first('.incompleteChores')) do
+        expect(page).to have_content("Incomplete Chores")
+        expect(page).not_to have_content(@chore1.task_name)
+        expect(page).not_to have_content(@chore1.description)
+        expect(page).not_to have_content(@chore1.frequency)
+        expect(page).not_to have_content(@chore1.weight)
+
+        expect(page).not_to have_content(@chore2.task_name)
+        expect(page).not_to have_content(@chore2.description)
+        expect(page).not_to have_content(@chore2.frequency)
+        expect(page).not_to have_content(@chore2.weight)
+
+        expect(page).not_to have_content(@chore3.task_name)
+        expect(page).not_to have_content(@chore3.description)
+        expect(page).not_to have_content(@chore3.frequency)
+        expect(page).not_to have_content(@chore3.weight)
+      end
+
+      within(first('.completedChores')) do
+        expect(page).to have_content("Complete Chores")
+        expect(page).not_to have_content(@chore1.task_name)
+        expect(page).not_to have_content(@chore1.description)
+        expect(page).not_to have_content(@chore1.frequency)
+        expect(page).not_to have_content(@chore1.weight)
+
+        expect(page).not_to have_content(@chore2.task_name)
+        expect(page).not_to have_content(@chore2.description)
+        expect(page).not_to have_content(@chore2.frequency)
+        expect(page).not_to have_content(@chore2.weight)
 
         expect(page).not_to have_content(@chore3.task_name)
         expect(page).not_to have_content(@chore3.description)
