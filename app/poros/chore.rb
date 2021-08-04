@@ -1,5 +1,6 @@
 class Chore
-  attr_reader :household_id,
+  attr_reader :id,
+              :household_id,
               :task_name,
               :description,
               :weight,
@@ -9,6 +10,7 @@ class Chore
               :location
 
   def initialize(attributes)
+    @id = attributes[:id]
     @household_id = attributes[:household_id]
     @task_name = attributes[:task_name]
     @description = attributes[:description]
@@ -16,6 +18,14 @@ class Chore
     @frequency = attributes[:frequency]
     @outdoor = attributes[:outdoor]
     @id = attributes[:id]
+  end
+
+  def location
+    if @outdoor == true
+      'Outdoor'
+    else
+      'Indoor'
+    end
   end
 
   def location
