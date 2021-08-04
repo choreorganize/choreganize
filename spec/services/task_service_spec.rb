@@ -2,6 +2,12 @@ require 'rails_helper'
 
 RSpec.describe TaskService do
   describe 'class methods' do
+    describe '::get_list' do
+      it 'can connect to the Google Task API' do
+
+      end
+    end
+
     describe '::create_task' do
       it 'can connect to the Google Task API' do
         # this is mocking out the thing that we're testing right now...

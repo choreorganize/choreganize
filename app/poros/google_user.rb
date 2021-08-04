@@ -1,15 +1,17 @@
 class GoogleUser
-  attr_reader :google_id,
+  attr_reader :id,
+              :google_id,
               :name,
               :email,
               :household_id,
               :token
 
   def initialize(attributes)
-    @google_id = attributes[:google_id]
-    @name = attributes[:name]
-    @email = attributes[:email]
-    @household_id = attributes[:household_id]
-    @token = attributes[:token]
+    @id = attributes[:id]
+    @google_id = attributes[:attributes][:google_id]
+    @name = attributes[:attributes][:name]
+    @email = attributes[:attributes][:email]
+    @household_id = attributes[:attributes][:household_id]
+    @token = attributes[:attributes][:token]
   end
 end
