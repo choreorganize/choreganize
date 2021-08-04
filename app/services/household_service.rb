@@ -10,7 +10,6 @@ class HouseholdService
 
   def self.weather_data(household_id)
     response = connection.get("/api/v1/household/#{household_id}")
-    a = JSON.parse(response.body, symbolize_names: true)
-    # require 'pry'; binding.pry
+    JSON.parse(response.body, symbolize_names: true)
   end
 end
