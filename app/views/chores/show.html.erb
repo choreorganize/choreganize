@@ -2,12 +2,19 @@
 
 <% if @chore.location == 'Outdoor' %>
   <h2>Weather Forecast</h2>
-  <%= @weather_forecast %>
+  <% @daily_forecast.each do |day| %>
+    <ul>
+      <li><%= day[:date] %></li>
+      <li><%= day[:max_temp] %></li>
+      <li><%= day[:min_temp] %></li>
+      <li><%= day[:conditions] %></li>
+    </ul>
+  <% end %>
 <% end %>
 
 <ul>
   <li>Description: <%= @chore.description %></li>
   <li>Frequency: <%= @chore.frequency %></li>
   <li>Weight: <%= @chore.weight %></li>
-  <li>Location: <% @chore.location %></li>
+  <li>Location: <%= @chore.location %></li>
 </ul>
