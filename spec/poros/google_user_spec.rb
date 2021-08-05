@@ -2,12 +2,14 @@ require 'rails_helper'
 
 RSpec.describe GoogleUser do
   it 'it should build a GoogleUser PORO' do
-    attributes = {id: '1',
+    attributes = { data: { 
+                  attributes: {
+                  id: '1',
                   name: 'Moe deGrasse Tyson',
                   household_id: nil,
                   email: 'cutthatgrass@ex.com',
                   google_id: '456',
-                  token: '1234567890' }
+                  token: '1234567890' }}}
 
     google_user = GoogleUser.new(attributes)
 

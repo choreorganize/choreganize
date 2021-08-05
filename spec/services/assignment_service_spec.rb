@@ -8,12 +8,14 @@ RSpec.describe "Assignment API" do
         name: 'Suzie Kim',
         email: 'suziekim.dev@gmail.com',
         google_id: '101278412815195230082',
-        token: 'ya29.a0ARrdaM8He2f1lV96cw6s83YS2Ikxtl1g0av-enxXPPK1iEgiy9QtYIgZ6J2DKmHe6VaLlaxgLQX3Tdu8D9Zv52R8eQTnZQG8m1wQ5m_338_6qA9Cbpv9gnAAD1yEPSrj1bcL1O41vCajVE42TsSDC0PS2N7I'
+        token: 'ya29.a0ARrdaM87L11UbxZMDp7_7sz5T63TYlHzdTfpPSHKeLMleubO7Iy-JRA_LuHEdT0YK0xHUz0VW5Z3rAJs6Xhb-W1jl-1EKpe55_gMXwB09vtrWw_v0DzL23MbltPzpA22Kyip0wiDqUqp7nIVzqbb9gBJm7tN'
         } }
 
         roommate = GoogleUserFacade.user(user_params)
    
-        attributes = { address: '123 Main Street',
+        attributes = { data: {
+                  attributes: {      
+                  address: '123 Main Street',
                    city: 'Denver',
                    state: 'CO',
                    id: 123,
@@ -64,7 +66,7 @@ RSpec.describe "Assignment API" do
                                                          max_temp: 308.6,
                                                          min_temp: 295.06,
                                                          conditions: 'light rain',
-                                                         icon: '10d' }] } }
+                                                         icon: '10d' }] } } } }
 
         household = Household.new(attributes)
       

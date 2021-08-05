@@ -1,22 +1,21 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-RSpec.describe 'TasksFacade' do
-  it 'returns user attributes' do
-    current_user = GoogleUser.new({
-      google_id: '789',
-      name: 'Anita Nappe',
-      email: 'sleepy1@ex.com',
-      household_id: 123,
-      token: 'longgooletokenhere',
-      incomplete_chores: [],
-      completed_chore: []
-    })
+# RSpec.describe 'TasksFacade' do
+#   it 'returns user attributes', :vcr do
+#     end_to_back_end = { roommate: {
+#                         name: 'Moe deGrasse Tyson',
+#                         email: 'cutthatgrass@ex.com',
+#                         google_id: '456',
+#                         token: '1234567890'
+#                       } }
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(current_user)
-    task_name = "vacuum"
+#     user_params = GoogleUsersService.create_or_find_user(send_to_back_end)
+    
+#     current_user = GoogleUser.new(user_params[:data])
+#     task_name = "vacuum"
 
-    task = TasksFacade.post_task(task_name, @current_user)
+#     task = TasksFacade.post_task(task_name, current_user)
 
 
-  end
-end
+#   end
+# end

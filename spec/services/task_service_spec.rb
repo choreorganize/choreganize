@@ -1,40 +1,45 @@
 require 'rails_helper'
 
 RSpec.describe TaskService do
-  describe 'class methods' do
-    describe '::get_list' do
-      it 'can connect to the Google Task API' do
+  describe '::create_task' do
+    #unauthenticated
+    it 'can connect to the Google Task API', :vcr do
+      user_params = { roommate: {
+        name: 'Suzie Kim',
+        email: 'suziekim.dev@gmail.com',
+        google_id: '101278412815195230082',
+        token: 'ya29.a0ARrdaM87L11UbxZMDp7_7sz5T63TYlHzdTfpPSHKeLMleubO7Iy-JRA_LuHEdT0YK0xHUz0VW5Z3rAJs6Xhb-W1jl-1EKpe55_gMXwB09vtrWw_v0DzL23MbltPzpA22Kyip0wiDqUqp7nIVzqbb9gBJm7tN'
+        } }
 
-      end
+      current_user = GoogleUserFacade.user(user_params)
+
+      task_list = 'MTExNDA1MzYzNDIwODcxMDI4NjU6MDow'
+      response = TaskService.create_task("Mow the lawn", current_user, task_list)
+
+      expect(response).to be_a(Hash)
     end
 
-    describe '::create_task' do
-      it 'can connect to the Google Task API' do
-        # this is mocking out the thing that we're testing right now...
+    it 'cannot connect to the Google Task API', :vcr do
+      user_params = { roommate: {
+        name: 'Suzie Kim',
+        email: 'suziekim.dev@gmail.com',
+        google_id: '101278412815195230082',
+        token: 'ya29.a0ARrdaM8He2f1lV96cw6s83YS2Ikxtl1g0av-enxXPPK1iEgiy9QtYIgZ6J2DKmHe6VaLlaxgLQX3Tdu8D9Zv52R8eQTnZQG8m1wQ5m_338_6qA9Cbpv9gnAAD1yEPSrj1bcL1O41vCajVE42TsSDC0PS2N7I'
+        } }
 
-        # json_response = File.read('spec/fixtures/user_service/user_test.json')
-        # stub_request(:post, 'https://tasks.googleapis.com')
-        # .with(
-        #   body: { title: "Move and Groove" },
-          
-        #   headers: {
-        #     'Authorization' => 'Bearer ya29.a0ARrdaM_OO_Xj2aC67JU2TU_xXvlXb_0BTGfrKUG49mpAJM3jBno_sWsWfEPVNgB8lZCdU4A7Uo29-21KDU4Uapduf6fdWpVic81SQjMbWAV_DO4fobE2cDJNtMimRQV2rDzpTG4NbHD8JMxll5cgOgqOVHqC',
-        #     'Content-Length' => '0',
-        #     'User-Agent' => 'Faraday v1.5.1',
-        #     'Accept' => '*/*',
-        #     'Accept-Encoding' => 'gzip, deflate, br',
-        #     'Connection' => 'keep-alive'
-        #   }
-        # )
-        # .to_return(status: 200, body: json_response, headers: {})
+      current_user = GoogleUserFacade.user(user_params)
 
-        WebMock.allow_net_connect!
-        
-
-        response = TaskService.create_task("Mow the lawn", current_user)
-    
-        expect(response).to be_a(Hash)
-      end
+      task_list = 'MTExNDA1MzYzNDIwODcxMDI4NjU6MDow'
+      response = TaskService.create_task("Mow the lawn", current_user, task_list)
+   
+      expect(response).to be_a(Hash)
+      expect(response[:error]).to have_key(:code)
+      expect(response[:error]).to have_key(:message)
+      expect(response[:error]).to have_key(:errors)
+      expect(response[:error]).to have_key(:status)
+      expect(response[:error][:code]).to eq(401)
+      expect(response[:error][:message]).to eq("Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.") 
     end
   end
 end
+

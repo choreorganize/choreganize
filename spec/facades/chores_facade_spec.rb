@@ -15,8 +15,8 @@ RSpec.describe 'ChoresFacade' do
     end
   end
 
-  describe '::create_chore' do
+  # describe '::create_chore' do
     
-    chore_hash = ChoreService.create_or_find_chore(chore_info )
-  end
+  #   chore_hash = ChoreService.create_or_find_chore(chore_info )
+  # end
 end
