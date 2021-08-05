@@ -21,10 +21,8 @@ class ChoresController < ApplicationController
     else
       chore = ChoresFacade.create_chore(chore_info)
       flash[:success] = 'Chore Created!'
-      # require 'pry'; binding.pry
-      #
       # redirect_to root_path
-    # redirect_to household_chore_path(id: chore.id)
+      # redirect_to household_chore_path(id: chore.id)
     end
   end
 

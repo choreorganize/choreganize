@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Household New Page' do
   describe 'happy path' do
-    xit 'creates a new household' do
+    it 'creates a new household' do
       json_response = File.read('spec/fixtures/household_service/household_test.json')
 
       stub_request(:post, 'https://choreganize-api.herokuapp.com/api/v1/household')
