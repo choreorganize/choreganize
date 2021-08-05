@@ -13,11 +13,9 @@ class DashboardController < ApplicationController
         household_id: params[:household_id]
       }
     }
-    GoogleUserFacade.update_user(update_info)
-    # params[:id] #user id
-    # params[:household_id]
-    # params[:house_password] <~~~Can we move this beyond our MVP?
+    # require 'pry'; binding.pry
+    a = GoogleUserFacade.update_user(update_info)
+    # require 'pry'; binding.pry
     redirect_to user_dashboard_index_path
   end
 end
-# PATCH /api/v1/roommates/:id
