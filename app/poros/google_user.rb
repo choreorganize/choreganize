@@ -4,14 +4,18 @@ class GoogleUser
               :name,
               :email,
               :household_id,
-              :token
+              :token,
+              :incomplete_chores,
+              :completed_chores
 
   def initialize(attributes)
     @id = attributes[:id]
-    @google_id = attributes[:attributes][:google_id]
-    @name = attributes[:attributes][:name]
-    @email = attributes[:attributes][:email]
-    @household_id = attributes[:attributes][:household_id]
-    @token = attributes[:attributes][:token]
+    @google_id = attributes[:google_id]
+    @name = attributes[:name]
+    @email = attributes[:email]
+    @household_id = attributes[:household_id]
+    @token = attributes[:token]
+    @incomplete_chores = attributes[:incomplete_chores]
+    @completed_chores = attributes[:completed_chores]
   end
 end
