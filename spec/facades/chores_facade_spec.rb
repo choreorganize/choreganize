@@ -5,8 +5,8 @@ RSpec.describe 'ChoresFacade' do
     it 'finds chore and returns attribute attributes', :vcr do
       chore_hash = { data: {id: "1", type: "chore",
                       attributes: {
-                        task_name: 'Do',
-                        description: 'do it',
+                        task_name: 'wash dishes',
+                        description: 'Clean dishes please.',
                         household_id: 22,
                         id: 1,
                         weight: 2,
@@ -16,15 +16,15 @@ RSpec.describe 'ChoresFacade' do
                     }}
       pre_chore = Chore.new(chore_hash)
 
-      chore_id = 1
-      chore = ChoresFacade.find_and_create_chore(chore_id)
+      # chore_id = 1
+      chore = ChoresFacade.find_and_create_chore(pre_chore.id)
 
       expect(chore).to be_a(Chore)
       expect(chore.task_name).to eq("wash dishes")
       expect(chore.id).to eq(1)
       expect(chore.outdoor).to eq(true)
-      expect(chore.weight).to eq(1)
-      expect(chore.description).to eq("Clean dishes please\n ")
+      expect(chore.weight).to eq(2)
+      expect(chore.description).to eq("Clean dishes please.")
     end
   end
 
