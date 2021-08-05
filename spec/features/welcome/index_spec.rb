@@ -2,16 +2,16 @@ require 'rails_helper'
 
 RSpec.describe 'Welcome Page' do
   before(:each)do
-    person = { 'household_id' => '82',
-               'google_id' => ENV["GOOGLE_CLIENT_ID"],
-               'token' => ENV["GOOGLE_CLIENT_SECRET"],
-               'id' => '8'}
-
-    ApplicationController.any_instance.stub(:current_user).and_return(@current_user = GoogleUser.new(person))
-    logger = GoogleUser.new(person)
-    # stub_google_oauth2
-
-    visit root_path
+    # person = { 'household_id' => '82',
+    #            'google_id' => ENV["GOOGLE_CLIENT_ID"],
+    #            'token' => ENV["GOOGLE_CLIENT_SECRET"],
+    #            'id' => '8'}
+    #
+    # ApplicationController.any_instance.stub(:current_user).and_return(@current_user = GoogleUser.new(person))
+    # logger = GoogleUser.new(person)
+    # # stub_google_oauth2
+    #
+    # visit root_path
   end
 
   context "happy path" do
