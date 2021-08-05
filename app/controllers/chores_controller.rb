@@ -16,10 +16,14 @@ class ChoresController < ApplicationController
       }
     }
 
-    chore = ChoresFacade.create_chore(chore_info)
-    flash[:success] = 'Chore Created!'
-    redirect_to root_path
+    if chore_info[:chore].has_value?(nil)
+      flash[:error] = 'Error:  Chore Not Created.'
+    else
+      chore = ChoresFacade.create_chore(chore_info)
+      flash[:success] = 'Chore Created!'
+      redirect_to root_path
     # redirect_to household_chore_path(id: chore.id)
+    end
   end
 
   def show
@@ -32,6 +36,11 @@ class ChoresController < ApplicationController
   def update
     # require 'pry'; binding.pry
     # params[:household_id]
-    # params[:id]
   end
+
+  # private
+  # def chore_params
+  #
+  # end
+
 end
