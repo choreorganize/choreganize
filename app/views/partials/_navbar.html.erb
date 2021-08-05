@@ -7,7 +7,11 @@
         <h4><%= link_to 'My Dashboard', user_dashboard_index_path, class:'badge badge-light' %>&ensp;</h4>
       </li>
       <li class="nav-item">
-        <h4><%= link_to 'My Household', root_path, class:'badge badge-light' %></h4>
+        <% if current_user.household_id.nil? %>
+          <h4><%= link_to "Create A Household", new_household_path, class:'badge badge-light' %></h4>
+        <% else %>
+          <h4><%= link_to 'My Household', root_path, class:'badge badge-light' %></h4>
+        <% end %>
       </li>
     </ul>
   </div>

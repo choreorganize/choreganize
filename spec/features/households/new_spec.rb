@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Household New Page' do
   describe 'happy path' do
-    it 'creates a new household' do
+    xit 'creates a new household' do
       user_params = { data: {
                       id: '1',
                       attributes: {

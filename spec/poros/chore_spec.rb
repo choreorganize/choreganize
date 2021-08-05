@@ -14,7 +14,7 @@ RSpec.describe Chore do
                     }
                   }}
     chore = Chore.new(chore_hash)
-    
+
     expect(chore.id).to eq(chore_hash[:data][:id].to_i)
     expect(chore.task_name).to eq(chore_hash[:data][:attributes][:task_name])
     expect(chore.description).to eq(chore_hash[:data][:attributes][:description])

@@ -1,8 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe 'ChoresFacade' do
-  describe "::find_and_create_chore" do 
+  describe "::find_and_create_chore" do
     it 'finds chore and returns attribute attributes', :vcr do
+      chore_hash = { data: {id: "1", type: "chore",
+                      attributes: {
+                        task_name: 'Do',
+                        description: 'do it',
+                        household_id: 22,
+                        id: 1,
+                        weight: 2,
+                        frequency: 1,
+                        outdoor: true
+                      }
+                    }}
+      pre_chore = Chore.new(chore_hash)
+
       chore_id = 1
       chore = ChoresFacade.find_and_create_chore(chore_id)
 
@@ -16,7 +29,7 @@ RSpec.describe 'ChoresFacade' do
   end
 
   # describe '::create_chore' do
-    
+
   #   chore_hash = ChoreService.create_or_find_chore(chore_info )
   # end
 end
