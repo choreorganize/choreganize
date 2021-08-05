@@ -1,6 +1,5 @@
 class Chore
-  attr_reader :id,
-              :household_id,
+  attr_reader :household_id,
               :task_name,
               :description,
               :weight,
@@ -10,13 +9,13 @@ class Chore
               :location
 
   def initialize(chore_hash)
-    @household_id = chore_hash[:data][:attributes][:household_id].to_i
+    @household_id = chore_hash[:data][:attributes][:household_id]
     @task_name = chore_hash[:data][:attributes][:task_name]
     @description = chore_hash[:data][:attributes][:description]
     @weight = chore_hash[:data][:attributes][:weight]
-    @frequency = chore_hash[:data][:attributes][:frequency].to_i
+    @frequency = chore_hash[:data][:attributes][:frequency]
     @outdoor = chore_hash[:data][:attributes][:outdoor]
-    @id = chore_hash[:data][:id].to_i
+    @id = chore_hash[:data][:id]
   end
 
   def location

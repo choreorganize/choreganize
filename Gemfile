@@ -55,6 +55,8 @@ group :development, :test do
   gem 'simplecov'
   gem 'travis'
   gem 'vcr'
+  gem 'launchy'
+
 end
 
 group :development do

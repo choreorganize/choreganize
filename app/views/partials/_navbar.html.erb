@@ -7,7 +7,7 @@
         <h4><%= link_to 'My Dashboard', user_dashboard_index_path, class:'badge badge-light' %>&ensp;</h4>
       </li>
       <li class="nav-item">
-        <h4><%= link_to 'My Household', households_path, class:'badge badge-light' %></h4>
+        <h4><%= link_to 'My Household', household_path(@current_user.household_id), class:'badge badge-light' %></h4>
       </li>
     </ul>
   </div>

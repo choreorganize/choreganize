@@ -1,3 +1,4 @@
+
 class Household
   attr_reader :address,
               :city,

@@ -98,6 +98,15 @@ RSpec.describe Household do
       }
     }
 
+    #attributes = { address: '123 Main Street',
+        #          city: 'Anytown',
+        #          state: 'CO',
+        #          id: '1',
+        #          roommates: [],
+        #          chores: [],
+        #           weather_forecast: {} }
+# >>>>>>> new_chore
+
     house = Household.new(attributes)
 
     expect(house.address).to eq('9385 Dooley Plains')
