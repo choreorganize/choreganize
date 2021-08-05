@@ -13,9 +13,10 @@ class HouseholdsController < ApplicationController
       }
     }
 
-    HouseholdsFacade.create_household(household_info)
+    house = HouseholdsFacade.create_household(household_info)
     flash[:success] = 'House Created!'
-    redirect_to user_dashboard_index_path
+    # redirect_to user_dashboard_index_path
+    redirect_to household_path(house.id)
   end
 
   def show
