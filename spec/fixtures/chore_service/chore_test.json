@@ -3,11 +3,11 @@
     "id": "1",
     "type": "chore",
     "attributes": {
-      "household_id": "1",
+      "household_id": "82",
       "task_name": "Mow Lawn",
       "description": "Cut some grass, my friend.",
-      "weight": "1",
-      "frequency": "1",
+      "weight": "2",
+      "frequency": "3",
       "outdoor": "true",
       "household": {
         "id": "1",

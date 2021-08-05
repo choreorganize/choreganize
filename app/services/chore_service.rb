@@ -4,7 +4,7 @@ class ChoreService
   end
 
   def self.create_or_find_chore(chore_info)
-    response = connection.post("/api/v1/household/#{chore_info[:chore][:household_id]}/chore", chore_info)
+    response = connection.post("/api/v1/chores", chore_info)
     JSON.parse(response.body, symbolize_names: true)
   end
 end
