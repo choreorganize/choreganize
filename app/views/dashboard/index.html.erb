@@ -5,8 +5,7 @@
     <p>Join or create a hosuehold</p>
     <%= link_to "Create A Household", new_household_path%>
 
-      <%= form_with url: google_user_index_path do |form| %>
-        <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form_with url: join_house_path(id: current_user.id), method: :patch, remote: true do |form| %>
         <%= form.label :household_id, 'Enter Households id:' %>
         <%= form.text_field :household_id %>
         <%= form.label :house_password, 'Enter Households Password:' %>
