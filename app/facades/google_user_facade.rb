@@ -4,4 +4,9 @@ class GoogleUserFacade
     formatted = user_attributes[:data][:attributes]
     GoogleUser.new(formatted)
   end
+  
+  def self.update_user(user_info)
+    user_attributes = GoogleUsersService.update_user(user_info)
+    GoogleUser.new(user_attributes)
+  end
 end

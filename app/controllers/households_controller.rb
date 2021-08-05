@@ -21,7 +21,15 @@ class HouseholdsController < ApplicationController
     household = HouseholdsFacade.create_household(household_info)
     flash[:success] = 'House Created!'
 
-    redirect_to user_dashboard_index_path
+    household_id = {
+                    roommate: 
+                    {
+                    household_id: household.id 
+                    }
+                    }
+
+    GoogleUserFacade.update_user(household_id)
+    redirect_to household_path(id: household.id)
   end
   
   def show
