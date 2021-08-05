@@ -2,65 +2,39 @@ require 'rails_helper'
 
 RSpec.describe 'User Dashboard' do
   before :each do
-    @chore1 = Chore.new({ data:
-      { id: '189',
-        type: 'chore',
-        attributes:
-        { task_name: 'Mow Lawn',
-          household_id: 123,
-          description: 'Cut some grass, my friend.',
-          weight: 1,
-          frequency: 'weekly',
-          outdoor: true,
-          household:
-          { id: 123,
-            address: '87022 Victor Summit',
-            password_digest: 'L5rIcKx27E0',
-            created_at: '2021-08-02T22:59:01.512Z',
-            updated_at: '2021-08-02T22:59:01.512Z',
-            city: 'denver',
-            state: 'co' } },
-        relationships: { household: { data: { id: '82', type: 'households' } } } } })
+    @chore1 = Chore.new({ data: {
+                          attributes: {
+                          id: "1",
+                          task_name: 'Mow',
+                          household_id: 123,
+                          description: 'Cut some grass, my friend.',
+                          weight: 1,
+                          frequency: 'weekly',
+                          outdoor: true
+                        }}})
 
-    @chore2 = Chore.new({ data:
-      { id: '612',
-        type: 'chore',
-        attributes:
-        { task_name: 'dishes',
-          household_id: 123,
-          description: 'do the dishes.',
-          weight: 3,
-          frequency: 'daily',
-          outdoor: false,
-          household:
-          { id: 123,
-            address: '87022 Victor Summit',
-            password_digest: 'L5rIcKx27E0',
-            created_at: '2021-08-02T22:59:01.512Z',
-            updated_at: '2021-08-02T22:59:01.512Z',
-            city: 'denver',
-            state: 'co' } },
-        relationships: { household: { data: { id: '82', type: 'households' } } } } })
+    @chore2 = Chore.new({ data: {
+                          attributes: {
+                          id: "2",
+                          task_name: 'Clean Dishes',
+                          household_id: 123,
+                          description: 'Clean some dishes.',
+                          weight: 3,
+                          frequency: 'daily',
+                          outdoor: false
+                        }}})
 
-    @chore3 = Chore.new({ data:
-      { id: '215',
-        type: 'chore',
-        attributes:
-        { task_name: 'Dont Mow Lawn',
-          household_id: 123,
-          description: 'dont Cut some grass, my friend.',
-          weight: 2,
-          frequency: 'bimonthly',
-          outdoor: true,
-          household:
-          { id: 123,
-            address: '87022 Victor Summit',
-            password_digest: 'L5rIcKx27E0',
-            created_at: '2021-08-02T22:59:01.512Z',
-            updated_at: '2021-08-02T22:59:01.512Z',
-            city: 'denver',
-            state: 'co' } },
-        relationships: { household: { data: { id: '82', type: 'households' } } } } })
+    @chore3 = Chore.new({ data: {
+                          attributes: {
+                          id: "3",
+                          task_name: 'Laundry',
+                          household_id: 123,
+                          description: 'Wash some laundry.',
+                          weight: 2,
+                          frequency: 'bimonthly',
+                          outdoor: true
+                        }}})
+
 
     attributes = {
       "data": {
@@ -141,16 +115,19 @@ RSpec.describe 'User Dashboard' do
   end
   describe 'Happy Path: Displays all chores' do
     it 'shows all assigned chores' do
-      @current_user = GoogleUser.new({
-                                       google_id: '123',
-                                       name: 'Anita Nappe',
-                                       email: 'sleepy1@ex.com',
-                                       household_id: 123,
-                                       token: 'longgooletokenhere',
-                                       incomplete_chores: [@chore1],
-                                       completed_chores: [@chore2]
-                                     })
-
+      user_params = { data:{
+                      id: "60",
+                      attributes: { 
+                        name: 'Suzie Kim',
+                        email: 'suziekim.dev@gmail.com',
+                        google_id: '101278412815195230082',
+                        token: 'ya29.a0ARrdaM87L11UbxZMDp7_7sz5T63TYlHzdTfpPSHKeLMleubO7Iy-JRA_LuHEdT0YK0xHUz0VW5Z3rAJs6Xhb-W1jl-1EKpe55_gMXwB09vtrWw_v0DzL23MbltPzpA22Kyip0wiDqUqp7nIVzqbb9gBJm7tN',
+                        completed_chores: [@chore2],
+                        incomplete_chores: [@chore1]
+                        }}}
+  
+      @current_user = GoogleUser.new(user_params)
+   
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
       visit user_dashboard_index_path
 
@@ -203,15 +180,16 @@ RSpec.describe 'User Dashboard' do
 
   describe 'Displays to-do chores' do
     it 'shows chores that are incomplete_chores' do
-      @current_user = GoogleUser.new({
+      @current_user = GoogleUser.new({ data: {
+                                       attributes: {
                                        google_id: '123',
                                        name: 'Anita Nappe',
                                        email: 'sleepy1@ex.com',
                                        household_id: 123,
                                        token: 'longgooletokenhere',
-                                       incomplete_chores: [@chore1],
-                                       completed_chores: []
-                                     })
+                                       incomplete_chores: [],
+                                       completed_chores: [@chore2]
+                                     }}})
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
       visit user_dashboard_index_path
       within(first('.incompleteChores')) do
@@ -261,7 +239,8 @@ RSpec.describe 'User Dashboard' do
 
   describe 'Displays complete chores' do
     it 'shows chores that are completed_chores' do
-      @current_user = GoogleUser.new({
+      @current_user = GoogleUser.new({ data: {
+                                       attributes: {
                                        google_id: '123',
                                        name: 'Anita Nappe',
                                        email: 'sleepy1@ex.com',
@@ -269,7 +248,7 @@ RSpec.describe 'User Dashboard' do
                                        token: 'longgooletokenhere',
                                        incomplete_chores: [],
                                        completed_chores: [@chore2]
-                                     })
+                                     }}})
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
       visit user_dashboard_index_path
       within(first('.incompleteChores')) do
@@ -319,7 +298,8 @@ RSpec.describe 'User Dashboard' do
 
   describe 'Sad Path: Displays no chores' do
     it 'doest show chores that are not assigned' do
-      @current_user = GoogleUser.new({
+      @current_user = GoogleUser.new({ data: {
+                                       attributes: {
                                        google_id: '123',
                                        name: 'Anita Nappe',
                                        email: 'sleepy1@ex.com',
@@ -327,7 +307,7 @@ RSpec.describe 'User Dashboard' do
                                        token: 'longgooletokenhere',
                                        incomplete_chores: [],
                                        completed_chores: []
-                                     })
+                                     }}})
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
       visit user_dashboard_index_path
       within(first('.incompleteChores')) do
@@ -378,7 +358,8 @@ RSpec.describe 'User Dashboard' do
 
   describe 'Sad Path: No household' do
     it 'doest show chores if household nil' do
-      @current_user = GoogleUser.new({
+      @current_user = GoogleUser.new({ data: {
+                                       attributes: {
                                        google_id: '123',
                                        name: 'Anita Nappe',
                                        email: 'sleepy1@ex.com',
@@ -386,7 +367,7 @@ RSpec.describe 'User Dashboard' do
                                        token: 'longgooletokenhere',
                                        incomplete_chores: [],
                                        completed_chores: []
-                                     })
+                                     }}})
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
 
       visit user_dashboard_index_path

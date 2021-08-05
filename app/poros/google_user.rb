@@ -8,15 +8,15 @@ class GoogleUser
               :incomplete_chores,
               :completed_chores
 
-  def initialize(attributes)
-    @id = attributes[:data][:id]
-    @google_id = attributes[:data][:attributes][:google_id]
-    @name = attributes[:data][:attributes][:name]
-    @email = attributes[:data][:attributes][:email]
-    @household_id = attributes[:data][:attributes][:household_id]
-    @token = attributes[:data][:attributes][:token]
-    @incomplete_chores = attributes[:data][:attributes][:incomplete_chores]
-    @completed_chores = attributes[:data][:attributes][:completed_chores]
+  def initialize(user_info)
+    @id = user_info[:data][:id]
+    @google_id = user_info[:data][:attributes][:google_id]
+    @name = user_info[:data][:attributes][:name]
+    @email = user_info[:data][:attributes][:email]
+    @household_id = user_info[:data][:attributes][:household_id]
+    @token = user_info[:data][:attributes][:token]
+    @incomplete_chores = user_info[:data][:attributes][:incomplete_chores]
+    @completed_chores = user_info[:data][:attributes][:completed_chores]
   end
 end
 
