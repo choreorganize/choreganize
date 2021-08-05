@@ -8,7 +8,7 @@ RSpec.describe 'household service' do
 
         stub_request(:post, 'https://choreganize-api.herokuapp.com/api/v1/roommates')
           .with(
-            body: { 'household' => { 'address' => '123 Main Street', 'city' => 'Anytown', 'state' => 'CO' } },
+            body: { 'household' => { 'address' => '9385 Dooley Plains', 'city' => 'denver', 'state' => 'co' } },
             headers: {
               'Accept' => '*/*',
               'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
@@ -19,9 +19,9 @@ RSpec.describe 'household service' do
           .to_return(status: 200, body: json_response, headers: {})
 
         request_data = { household: {
-          address: '123 Main Street',
-          city: 'Anytown',
-          state: 'CO'
+          address: '9385 Dooley Plains',
+          city: 'denver',
+          state: 'co'
         } }
 
         response = GoogleUsersService.create_or_find_user(request_data)
@@ -30,9 +30,9 @@ RSpec.describe 'household service' do
         expect(response[:data]).to have_key(:id)
         expect(response[:data]).to have_key(:type)
         expect(response[:data]).to have_key(:attributes)
-        expect(response[:data][:attributes][:address]).to eq('123 Main Street')
-        expect(response[:data][:attributes][:city]).to eq('Anytown')
-        expect(response[:data][:attributes][:state]).to eq('CO')
+        expect(response[:data][:attributes][:address]).to eq('9385 Dooley Plains')
+        expect(response[:data][:attributes][:city]).to eq('denver')
+        expect(response[:data][:attributes][:state]).to eq('co')
       end
     end
 
