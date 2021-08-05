@@ -12,7 +12,7 @@ RSpec.describe 'Chore show Page' do
         }
       )
       .to_return(status: 200, body: json_response, headers: {})
-      
+    
     @chore1 = Chore.new( data: {
                          id: 1,
                          attributes: {
@@ -34,7 +34,6 @@ RSpec.describe 'Chore show Page' do
                          frequency: 'daily',
                          outdoor: false
                        }})
-
     attributes = {
       "data": {
         "id": '1',

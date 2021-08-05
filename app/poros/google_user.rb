@@ -19,3 +19,5 @@ class GoogleUser
     @completed_chores = user_info[:data][:attributes][:completed_chores]
   end
 end
+
+
