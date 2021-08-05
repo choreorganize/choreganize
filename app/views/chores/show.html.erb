@@ -4,6 +4,14 @@
   <%= form.submit 'Update Chore' %>
 <% end %>
 
+<% if !current_user.incomplete_chores.include?(@chore) %>
+  <%= form_with url: "/chores/#{@chore.id}/assignments", method: :post, local: :true do |form| %>
+    <%= form.hidden_field :household_id, :value => @chore.household_id %>
+    <%= form.hidden_field :chore_name, :value => @chore.task_name %>
+    <%= form.submit 'Claim Chore' %>
+  <% end %>
+<% end %>
+
 <% if @chore.location == 'Outdoor' %>
   <h2>Weather Forecast</h2>
   <% @daily_forecast.each do |day| %>
