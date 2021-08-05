@@ -9,13 +9,16 @@ class GoogleUser
               :completed_chores
 
   def initialize(attributes)
-    @id = attributes[:id]
-    @google_id = attributes[:google_id]
-    @name = attributes[:name]
-    @email = attributes[:email]
-    @household_id = attributes[:household_id]
-    @token = attributes[:token]
-    @incomplete_chores = attributes[:incomplete_chores]
-    @completed_chores = attributes[:completed_chores]
+    require 'pry'; binding.pry
+    @id = attributes[:data][:id]
+    @google_id = attributes[:data][:attributes][:google_id]
+    @name = attributes[:data][:attributes][:name]
+    @email = attributes[:data][:attributes][:email]
+    @household_id = attributes[:data][:attributes][:household_id]
+    @token = attributes[:data][:attributes][:token]
+    @incomplete_chores = attributes[:data][:attributes][:incomplete_chores]
+    @completed_chores = attributes[:data][:attributes][:completed_chores]
   end
 end
+
+
