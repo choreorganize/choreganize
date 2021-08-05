@@ -8,8 +8,6 @@
       <%= form_with url: join_house_path(id: current_user.id), method: :patch, remote: true do |form| %>
         <%= form.label :household_id, 'Enter Households id:' %>
         <%= form.text_field :household_id %>
-        <%= form.label :house_password, 'Enter Households Password:' %>
-        <%= form.text_field :house_password %>
         <%= form.submit 'Find and Join Household' %>
       <% end %>
 
