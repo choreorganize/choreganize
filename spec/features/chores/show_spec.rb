@@ -12,8 +12,9 @@ RSpec.describe 'Chore show Page' do
         }
       )
       .to_return(status: 200, body: json_response, headers: {})
-
-    @chore1 = Chore.new({
+      
+    @chore1 = Chore.new( data: {
+                         attributes: {
                          id: 1,
                          task_name: 'Mow',
                          household_id: 123,
@@ -21,9 +22,10 @@ RSpec.describe 'Chore show Page' do
                          weight: 1,
                          frequency: 'weekly',
                          outdoor: true
-                       })
+                       }})
 
-    @chore2 = Chore.new({
+    @chore2 = Chore.new( data: {
+                         attributes: {
                          id: 2,
                          task_name: 'Dont Mow',
                          household_id: 123,
@@ -31,7 +33,7 @@ RSpec.describe 'Chore show Page' do
                          weight: 3,
                          frequency: 'daily',
                          outdoor: false
-                       })
+                       }})
 
     attributes = {
       "data": {
@@ -111,15 +113,17 @@ RSpec.describe 'Chore show Page' do
 
     @house = Household.new(attributes)
 
-    @current_user = GoogleUser.new({
-                                     google_id: '789',
-                                     name: 'Anita Nappe',
-                                     email: 'sleepy1@ex.com',
-                                     household_id: 1,
-                                     token: 'longgooletokenhere',
-                                     incomplete_chores: [@chore1, @chore2],
-                                     completed_chore: []
-                                   })
+    user_params = { data: { 
+        attributes: {
+        id: '1',
+        name: 'Suzie Kim',
+        household_id: @house.id,
+        email: 'suziekim.dev@gmail.com',
+        google_id: '101278412815195230082',
+        token: 'ya29.a0ARrdaM87L11UbxZMDp7_7sz5T63TYlHzdTfpPSHKeLMleubO7Iy-JRA_LuHEdT0YK0xHUz0VW5Z3rAJs6Xhb-W1jl-1EKpe55_gMXwB09vtrWw_v0DzL23MbltPzpA22Kyip0wiDqUqp7nIVzqbb9gBJm7tN'
+        }}}
+  
+    @current_user = GoogleUser.new(user_params[:data])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
   end
   it 'shows a chores attributes' do
