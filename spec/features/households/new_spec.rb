@@ -3,6 +3,22 @@ require 'rails_helper'
 RSpec.describe 'Household New Page' do
   describe 'happy path' do
     it 'creates a new household' do
+      user_params = { data: {
+                      id: '1',
+                      attributes: {
+                      id: '1',
+                      name: 'Suzie Kim',
+                      household_id: nil,
+                      email: 'suziekim.dev@gmail.com',
+                      google_id: '101278412815195230082',
+                      token: 'ya29.a0ARrdaM87L11UbxZMDp7_7sz5T63TYlHzdTfpPSHKeLMleubO7Iy-JRA_LuHEdT0YK0xHUz0VW5Z3rAJs6Xhb-W1jl-1EKpe55_gMXwB09vtrWw_v0DzL23MbltPzpA22Kyip0wiDqUqp7nIVzqbb9gBJm7tN'
+                      }}}
+
+      @current_user = GoogleUser.new(user_params)
+
+      ApplicationController.any_instance.stub(:current_user).and_return(@current_user)
+
+
       json_response = File.read('spec/fixtures/household_service/household_test.json')
 
       stub_request(:post, 'https://choreganize-api.herokuapp.com/api/v1/household')
