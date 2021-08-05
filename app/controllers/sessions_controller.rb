@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   skip_before_action :authenticate_user
 
   def create
+    # require 'pry'; binding.pry
     auth_hash = request.env['omniauth.auth']
     user_info = {
       roommate:
