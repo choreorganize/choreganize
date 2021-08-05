@@ -121,7 +121,9 @@ RSpec.describe 'Chore show Page' do
         household_id: @house.id,
         email: 'suziekim.dev@gmail.com',
         google_id: '101278412815195230082',
-        token: 'ya29.a0ARrdaM87L11UbxZMDp7_7sz5T63TYlHzdTfpPSHKeLMleubO7Iy-JRA_LuHEdT0YK0xHUz0VW5Z3rAJs6Xhb-W1jl-1EKpe55_gMXwB09vtrWw_v0DzL23MbltPzpA22Kyip0wiDqUqp7nIVzqbb9gBJm7tN'
+        token: 'ya29.a0ARrdaM87L11UbxZMDp7_7sz5T63TYlHzdTfpPSHKeLMleubO7Iy-JRA_LuHEdT0YK0xHUz0VW5Z3rAJs6Xhb-W1jl-1EKpe55_gMXwB09vtrWw_v0DzL23MbltPzpA22Kyip0wiDqUqp7nIVzqbb9gBJm7tN',
+        completed_chores: [],
+        incomplete_chores: []
         }}}
 
     @current_user = GoogleUser.new(user_params)
@@ -129,13 +131,24 @@ RSpec.describe 'Chore show Page' do
   end
   it 'shows a chores attributes' do
     visit "/households/#{@house.id}/chores/#{@chore1.id}"
-
+    
     expect(page).to have_content(@chore1.task_name)
     expect(page).to have_content(@chore1.description)
     expect(page).to have_content(@chore1.weight)
     expect(page).to have_content(@chore1.frequency)
     expect(page).to have_content(@chore1.location)
     expect(page).to have_content('Weather Forecast')
+  end
+  it 'can select chore and create assignment' do 
+    visit "/households/#{@house.id}/chores/#{@chore1.id}"
+    
+    expect(page).to have_button("Claim Chore")  
+    expect(@current_user.incomplete_chores).to include(@chore1)
+
+    click_button 'Claim Chore'
+
+    expect(current_path).to eq("/households/#{@house.id}/chores/#{@chore1.id}")
+    expect(@current_user.incomplete_chores).to include(@chore1)
   end
   xit 'does not show forecast if chore is indoors' do
     visit "/households/#{@house.id}/chores/#{@chore2.id}"
