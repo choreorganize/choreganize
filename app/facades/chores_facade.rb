@@ -1,7 +1,6 @@
 class ChoresFacade
   def self.create_chore(chore_info)
-    chore_attributes = ChoreService.create_or_find_chore(chore_info)
-    formatted = chore_attributes[:data][:attributes]
-    Chore.new(formatted)
+    chore_hash = ChoreService.create_or_find_chore(chore_info)
+    Chore.new(chore_hash)
   end
 end
