@@ -28,19 +28,13 @@ class ChoresController < ApplicationController
 
   def show
     chore_id = params[:id].to_i
-    @chore = current_user.incomplete_chores.select { |chore| chore.id == chore_id }.pop
+    @chore = ChoresFacade.find_and_create_chore(chore_id)
     @house = HouseholdsFacade.get_weather(current_user.household_id)
     @daily_forecast = @house.weather_forecast[:daily_weather]
   end
 
   def update
     # require 'pry'; binding.pry
-    # params[:household_id]
-  end
-
-  # private
-  # def chore_params
-  #
-  # end
-
+    # params[:household_id
 end
+

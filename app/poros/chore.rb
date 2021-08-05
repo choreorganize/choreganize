@@ -1,5 +1,6 @@
 class Chore
-  attr_reader :household_id,
+  attr_reader :id,
+              :household_id,
               :task_name,
               :description,
               :weight,
@@ -17,7 +18,7 @@ class Chore
     @outdoor = chore_hash[:data][:attributes][:outdoor]
     @id = chore_hash[:data][:id].to_i
   end
-  
+
   def location
     'Indoor'
     return 'Outdoor' if @outdoor == true

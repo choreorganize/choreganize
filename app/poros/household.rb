@@ -10,8 +10,8 @@ class Household
 
   def initialize(attributes)
     @address = attributes[:data][:attributes][:address]
-    @city = attributes[:data][:attributes][:city]
-    @state = attributes[:data][:attributes][:state]
+    @city = attributes[:data][:attributes][:city].downcase
+    @state = attributes[:data][:attributes][:state].downcase
     @id = attributes[:data][:id]
     @roommates = attributes[:data][:attributes][:roommates]
     @chores = attributes[:data][:attributes][:chores]
