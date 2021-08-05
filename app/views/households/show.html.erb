@@ -9,19 +9,13 @@
 
 <% @household.roommates.each  do |roommate|%>
   <%=  roommate[:name] %> <br>
-  <% score = 0  %>
-  <% roommate[:completed_chores].each do |chore| %>
-    <%= link_to "#{chore[:task_name]}", "chore/#{chore[:id]}", method: :get %>
-    <% score += chore[:weight] %>
-  <% end  %>
-  <% roommate[:incomplete_chores].each do |chore| %>
-    <%= link_to "#{chore[:task_name]}", "chore/#{chore[:id]}", method: :get %>
-  <% end  %>
+
 
 
 <% end %>
 
-<br><br>
+<br>
+<br>
 
 <% "list all chores" %>
 <% @household.chores.each  do |chore|%>
