@@ -14,7 +14,7 @@ class DashboardController < ApplicationController
       }
     }
     # require 'pry'; binding.pry
-    a = GoogleUserFacade.update_user(update_info)
+    GoogleUserFacade.update_user(update_info)
     # require 'pry'; binding.pry
     redirect_to user_dashboard_index_path
   end
