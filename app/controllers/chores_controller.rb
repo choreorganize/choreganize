@@ -36,5 +36,6 @@ class ChoresController < ApplicationController
   def update
     # require 'pry'; binding.pry
     # params[:household_id
+  end
 end
 
