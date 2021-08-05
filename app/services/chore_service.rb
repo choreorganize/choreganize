@@ -6,7 +6,6 @@ def self.find_by_id(id)
 end
 
 def self.create_or_find_chore(chore_info)
-  require 'pry'; binding.pry
   response = connection.get('/api/v1/chores', chore_info)
   JSON.parse(response.body, symbolize_names: true)
 end
