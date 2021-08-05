@@ -1,7 +1,5 @@
 class Households::ChoresController < ApplicationController
-  def new
-
-  end
+  def new;  end
 
   def create
     # @household = Household.find(params[:household_id])

@@ -1,7 +1,12 @@
 class HouseholdsController < ApplicationController
+  # def index
+  #   # redirect_to "/households/#{current_user.household_id}"
+  # end
+
   def new; end
 
   def create
+
     household_info = {
       household:
       {
@@ -18,13 +23,16 @@ class HouseholdsController < ApplicationController
 
     redirect_to user_dashboard_index_path
   end
-
+  
   def show
-    if current_user.household_id == params[:id].to_i
-      @household = HouseholdsFacade.get_houshold_by_id(params[:id])
-    else
-      redirect_to user_dashboard
-    end
+    @user = current_user
+    @household = HouseholdsFacade.get_houshold_by_id(params[:id])
+
+    # if current_user.household_id == params[:id].to_i
+      # @household = HouseholdsFacade.get_houshold_by_id(params[:id])
+    # else
+    #   redirect_to user_dashboard_index_url
+    # end
   end
 
 
