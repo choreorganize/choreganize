@@ -13,25 +13,45 @@ RSpec.describe 'Chore show Page' do
       )
       .to_return(status: 200, body: json_response, headers: {})
 
-    @chore1 = Chore.new({
-                         id: 1,
-                         task_name: 'Mow',
-                         household_id: 123,
-                         description: 'Cut some grass, my friend.',
-                         weight: 1,
-                         frequency: 'weekly',
-                         outdoor: true
-                       })
+      @chore1 = Chore.new({ data:
+        { id: '188',
+          type: 'chore',
+          attributes:
+          { task_name: 'Mow Lawn',
+            household_id: 123,
+            description: 'Cut some grass, my friend.',
+            weight: 1,
+            frequency: 'weekly',
+            outdoor: true,
+            household:
+            { id: 123,
+              address: '87022 Victor Summit',
+              password_digest: 'L5rIcKx27E0',
+              created_at: '2021-08-02T22:59:01.512Z',
+              updated_at: '2021-08-02T22:59:01.512Z',
+              city: 'denver',
+              state: 'co' } },
+          relationships: { household: { data: { id: '82', type: 'households' } } } } })
 
-    @chore2 = Chore.new({
-                         id: 2,
-                         task_name: 'Dont Mow',
-                         household_id: 123,
-                         description: 'Dont Cut some grass, my friend.',
-                         weight: 3,
-                         frequency: 'daily',
-                         outdoor: false
-                       })
+      @chore2 = Chore.new({ data:
+        { id: '189',
+          type: 'chore',
+          attributes:
+          { task_name: 'dishes',
+            household_id: 123,
+            description: 'do the dishes.',
+            weight: 3,
+            frequency: 'daily',
+            outdoor: false,
+            household:
+            { id: 123,
+              address: '87022 Victor Summit',
+              password_digest: 'L5rIcKx27E0',
+              created_at: '2021-08-02T22:59:01.512Z',
+              updated_at: '2021-08-02T22:59:01.512Z',
+              city: 'denver',
+              state: 'co' } },
+          relationships: { household: { data: { id: '82', type: 'households' } } } } })
 
     attributes = {
       "data": {
@@ -124,6 +144,7 @@ RSpec.describe 'Chore show Page' do
   end
   it 'shows a chores attributes' do
     visit "/households/#{@house.id}/chores/#{@chore1.id}"
+    
 
     expect(page).to have_content(@chore1.task_name)
     expect(page).to have_content(@chore1.description)
