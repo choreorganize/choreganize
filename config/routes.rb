@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   post '/', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-
-  post '/chores/:id/assignments', to: 'assignment#create'
-  patch '/chores/:id/assignments/:id', to: 'assignment#update'
+  
+  namespace :chores do 
+    post '/:id/assignments', to: 'assignment#create'
+    patch '/:id/assignments/:id', to: 'assignment#update'
+  end
 
   resources :dashboard, only: :index, as: 'user_dashboard'
 
