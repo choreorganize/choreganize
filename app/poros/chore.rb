@@ -10,6 +10,7 @@ class Chore
               :location
 
   def initialize(chore_hash)
+require 'pry'; binding.pry    
     @household_id = chore_hash[:data][:attributes][:household_id].to_i
     @task_name = chore_hash[:data][:attributes][:task_name]
     @description = chore_hash[:data][:attributes][:description]
