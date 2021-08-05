@@ -4,6 +4,16 @@
 <% if current_user.household_id.nil? %>
     <p>Join or create a hosuehold</p>
     <%= link_to "Create A Household", new_household_path%>
+
+      <%= form_with url: google_user_index_path do |form| %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+        <%= form.label :household_id, 'Enter Households id:' %>
+        <%= form.text_field :household_id %>
+        <%= form.label :house_password, 'Enter Households Password:' %>
+        <%= form.text_field :house_password %>
+        <%= form.submit 'Find and Join Household' %>
+      <% end %>
+
 <% else %>
   <ul class="incompleteChores">
     <h2>Incomplete Chores</h2>
