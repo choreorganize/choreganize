@@ -9,7 +9,7 @@ class GoogleUser
               :completed_chores
 
   def initialize(attributes)
-    require 'pry'; binding.pry
+    # require 'pry'; binding.pry
     @id = attributes[:data][:id]
     @google_id = attributes[:data][:attributes][:google_id]
     @name = attributes[:data][:attributes][:name]
