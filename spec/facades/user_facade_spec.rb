@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'UserFacade' do
-  it 'returns user attributes', :vcr do
+  xit 'returns user attributes', :vcr do
     # auth_hash = File.read('spec/fixtures/user_service/auth_hash.json')
     # json_response = File.read('spec/fixtures/user_service/user_test.json')
 

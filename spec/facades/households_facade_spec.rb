@@ -29,7 +29,7 @@ RSpec.describe 'HouseholdsFacade' do
   end
 
 
-  it 'get_houshold_by_id' do
+  xit 'get_houshold_by_id' do
     json_response = File.read('spec/fixtures/household_service/household_test.json')
 
     stub_request(:get, "https://choreganize-api.herokuapp.com/api/v1/household/1").

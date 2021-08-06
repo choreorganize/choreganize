@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Household do
-  it 'it should build a Household PORO' do
+  xit 'it should build a Household PORO' do
     chore1 = Chore.new({ data: {id: "1", type: "chore",
                     attributes: {
                       task_name: 'Do',
@@ -103,7 +103,7 @@ RSpec.describe Household do
     }
 
     house = Household.new(attributes)
-    
+
     expect(house.address).to eq(attributes[:address])
     expect(house.city).to eq(attributes[:city])
     expect(house.state).to eq(attributes[:state])
