@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :dashboard, only: :index, as: 'user_dashboard'
+  resources :dashboard, only: :update, as: 'join_house'
 
   resources :households, only: %i[index new create show] do
     resources :chores, only: %i[new create show update]
