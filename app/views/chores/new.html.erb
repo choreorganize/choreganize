@@ -1,15 +1,18 @@
-<div class="container" style="width: 30%">
+<%= render partial: 'partials/navbar' %><br>
+
+<div class="container" style="width: 45%">
   <div class="col-sm", style='padding-left: 25px'>
-    <br><h2>Create a new chore</h2><br>
-    <section>
+    <br><h2>Create New Chore</h2>
+    <section><hr><br>
+
       <div id='createChore' %>
         <%= bootstrap_form_with(model: @chore, url: household_chores_path, method: :post, local: true) do |f| %>
           <%= f.hidden_field :household_id, value: :household_id %><br>
-          <%= f.text_field :task_name %><br>
-          <%= f.text_area :description %><br>
-          <%= f.select :weight, [["Simple", 1], ["Medium", 2], ["Hard", 3]] %><br>
-          <%= f.select :frequency, [["Weekly", 1], ["Bi-Monthly", 2], ["Monthly", 3]] %><br>
-          <%= f.check_box :outdoor %><br><br>
+          <%= f.text_field :task_name, placeholder: "Enter task name", skip_label: true %><br>
+          <%= f.text_area :description, placeholder: "Enter description", skip_label: true %><br>
+          <h5 class="left">Select Difficulty (below):</h5>&emsp;&emsp;<%= f.select :weight, [["Simple", 1], ["Medium", 2], ["Hard", 3]], skip_label: true %><br>
+          <h5 class="left">Select How Often (below)::</h5>&emsp;&emsp;<%= f.select :frequency, [["Weekly", 1], ["Bi-Monthly", 2], ["Monthly", 3]], skip_label: true %><br>
+          <h5 class="left"><span>&#10003; </span>Box if Outdoor</h5>&emsp;&emsp;<%= f.check_box :outdoor, skip_label: true %><br><br>
           <%= f.submit 'Submit Chore' %><br>
         <% end %>
       </div>

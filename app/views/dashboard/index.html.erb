@@ -1,11 +1,17 @@
-<% if !current_user.household_id.nil? %>
-  <%= render partial: 'partials/navbar' %><br>
-<% end %>
+<%= render partial: 'partials/navbar' %><br><br>
 
-<h1><%= current_user.name.split.first %>'s Dashboard</h1>
+<h1><%= current_user.name.split.first %>'s Dashboard</h1><hr>
+
 <% if current_user.household_id.nil? %>
-    <p>Join or create a hosuehold</p>
-    <%= link_to "Create A Household", new_household_path%>
+    <div class="left">
+      <h5>&emsp;&emsp;&emsp;&emsp;<%= link_to "=> New Household Link", new_household_path %></h5><br><br>
+    </div>
+
+    <div class='createHousehold' %>
+      <%= bootstrap_form_with(url: households_path, method: :post, class: 'form-inline', local: true) do |f|  %><h4 class="tab">Join a Household:</h4>&emsp;
+        <%= f.text_field :household_id, placeholder: "Enter household ID", skip_label: true %><br>&emsp;&emsp;
+        <%= f.submit 'Submit' %>
+      <% end %> <br><br><br>
 
       <%= form_with url: join_house_path(id: current_user.id), method: :patch, remote: true do |form| %>
         <%= form.label :household_id, 'Enter Households id:' %>
@@ -13,6 +19,7 @@
         <%= form.submit 'Find and Join Household' %>
       <% end %>
 
+      <br><br><p>Join or create a household</p>
 <% else %>
   <ul class="incompleteChores">
     <h2>Incomplete Chores</h2>
@@ -49,5 +56,5 @@
     <% end %>
   </ul>
 <% end %>
-<br><br><br><br><br><br>
+<br><br><br><br>
 <%= button_to "Log out", '/logout', method: :delete %>

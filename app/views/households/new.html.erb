@@ -1,9 +1,20 @@
-<h1>Household</h1>
+<%= render partial: 'partials/navbar' %><br><br>
+
+<h1>Create New Household</h1><hr>
 <br>
-<h4>Please create or join a household</h4>
+<h3>Please create or Join a household</h3><br>
 
 <section>
   <div class='createHousehold' %>
+    <%= bootstrap_form_with(url: households_path, method: :post, class: 'form-inline', local: true) do |f|  %><h4 class="left">Location:</h4>&emsp;
+      <%= f.text_field :address, placeholder: "Enter address", skip_label: true %><br>&emsp;
+      <%= f.text_field :city, placeholder: "Enter city", skip_label: true %><br>&emsp;
+      <%= f.text_field :state, placeholder: "Enter state", skip_label: true %><br><br>
+      <h4 class="left">Password:</h4>&emsp;<%= f.text_field :password, placeholder: "Enter password", skip_label: true %><br>&emsp;
+      <%= f.text_field :password_confirmation, placeholder: "Confirm password", skip_label: true %><br>&emsp;&emsp;&emsp;
+      <%= f.submit 'Create Household' %>
+    <% end %> <br><br><br>
+
   <%= form_with url: households_path, method: :post, local: true do |form| %>
     <%= form.label :address, 'Address' %>
     <%= form.text_field :address, required: :true %>
