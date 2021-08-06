@@ -31,15 +31,14 @@ RSpec.describe TaskService do
 
       task_list = 'MTExNDA1MzYzNDIwODcxMDI4NjU6MDow'
       response = TaskService.create_task("Mow the lawn", current_user, task_list)
-   
+
       expect(response).to be_a(Hash)
       expect(response[:error]).to have_key(:code)
       expect(response[:error]).to have_key(:message)
       expect(response[:error]).to have_key(:errors)
       expect(response[:error]).to have_key(:status)
       expect(response[:error][:code]).to eq(401)
-      expect(response[:error][:message]).to eq("Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.") 
+      expect(response[:error][:message]).to eq("Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.")
     end
   end
 end
-
