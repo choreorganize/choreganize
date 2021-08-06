@@ -1,8 +1,12 @@
 <h1><%= @chore.task_name %></h1>
 
-<%= form_with url: "/households/#{@house.id}/chores/#{@chore.id}", method: :patch, local: true do |form| %>
+<%
+=begin%>
+ <%= form_with url: "/households/#{@house.id}/chores/#{@chore.id}", method: :patch, local: true do |form| %>
   <%= form.submit 'Update Chore' %>
-<% end %>
+<% end %> 
+<%
+=end%>
 
 <% if !current_user.incomplete_chores.include?(@chore) %>
   <%= form_with url: "/chores/#{@chore.id}/assignments", method: :post, local: :true do |form| %>
