@@ -1,0 +1,30 @@
+
+
+<%= "#{@household.weather_forecast[:current_weather][:conditions]}"%>
+
+<%= "Welcome to Household #{1}" %><br><br>
+
+
+<% "Roommates" %><br><br>
+
+<% @household.roommates.each  do |roommate|%>
+  <%=  roommate[:name] %> <br>
+  <% score = 0  %>
+  <% roommate[:completed_chores].each do |chore| %>
+    <%= link_to "#{chore[:task_name]}", "chore/#{chore[:id]}", method: :get %>
+    <% score += chore[:weight] %>
+  <% end  %>
+  <% roommate[:incomplete_chores].each do |chore| %>
+    <%= link_to "#{chore[:task_name]}", "chore/#{chore[:id]}", method: :get %>
+  <% end  %>
+
+
+<% end %>
+
+<br><br>
+
+<% "list all chores" %>
+<% @household.chores.each  do |chore|%>
+<%= link_to "#{chore[:task_name]}", "chore/#{chore[:id]}", method: :get %>
+  <% chore[:weight] %><br>
+<% end %>

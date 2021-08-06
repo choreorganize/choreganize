@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :dashboard, only: :index, as: 'user_dashboard'
-
-  resources :households, only: %i[new create show] do
+  resources :households, only: %i[index new create show] do
     resources :chores, only: %i[new create show update]
   end
 end

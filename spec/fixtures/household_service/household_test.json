@@ -1,75 +1,110 @@
 {
-  "data": {
-    "id": "91",
-    "type": "households",
-    "attributes": {
-      "address": "9385 Dooley Plains",
-      "city": "denver",
-      "state": "co",
-      "roommates": [],
-      "chores": [],
-      "weather_forecast": {
-        "id": "nil",
-        "current_weather": {
-          "datetime": "2021-08-02 18:58:52 -0400",
-          "sunrise": "08:00",
-          "sunset": "22:12",
-          "temperature": 303,
-          "feels_like": 301.76,
-          "humidity": 30,
-          "uvi": 2.8,
-          "visibility": 10000,
-          "conditions": "broken clouds",
-          "icon": "04d"
-        },
-        "daily_weather": [
-          {
-            "date": "2021-08-02",
-            "sunrise": "08:00",
-            "sunset": "22:12",
-            "max_temp": 303.67,
-            "min_temp": 292.59,
-            "conditions": "scattered clouds",
-            "icon": "03d"
-          },
-          {
-            "date": "2021-08-03",
-            "sunrise": "08:01",
-            "sunset": "22:11",
-            "max_temp": 298.35,
-            "min_temp": 293.45,
-            "conditions": "light rain",
-            "icon": "10d"
-          },
-          {
-            "date": "2021-08-04",
-            "sunrise": "08:01",
-            "sunset": "22:09",
-            "max_temp": 305.11,
-            "min_temp": 293.5,
-            "conditions": "clear sky",
-            "icon": "01d"
-          },
-          {
-            "date": "2021-08-05",
-            "sunrise": "08:02",
-            "sunset": "22:08",
-            "max_temp": 307.77,
-            "min_temp": 294.13,
-            "conditions": "clear sky",
-            "icon": "01d"
-          },
-          {
-            "date": "2021-08-06",
-            "sunrise": "08:03",
-            "sunset": "22:07",
-            "max_temp": 308.6,
-            "min_temp": 295.06,
-            "conditions": "light rain",
-            "icon": "10d"
-          }
-        ]
-      }
+    "data": {
+        "id": "1",
+        "type": "households",
+        "attributes": {
+            "address": "123 Main Street",
+            "city": "Anytown",
+            "state": "CO",
+            "roommates": [],
+            "chores": [
+                {
+                    "id": 1,
+                    "household_id": 1,
+                    "task_name": "wash dishes",
+                    "description": "Clean dishes please\n ",
+                    "weight": 1,
+                    "frequency": "daily",
+                    "outdoor": false,
+                    "created_at": "2021-08-04T19:45:15.558Z",
+                    "updated_at": "2021-08-04T19:45:15.558Z"
+                },
+                {
+                    "id": 3,
+                    "household_id": 1,
+                    "task_name": "mow yard",
+                    "description": "mow de grace pless\n ",
+                    "weight": 1,
+                    "frequency": "weekly",
+                    "outdoor": true,
+                    "created_at": "2021-08-04T19:45:15.558Z",
+                    "updated_at": "2021-08-04T19:45:15.558Z"
+                },
+                {
+                    "id": 4,
+                    "household_id": 1,
+                    "task_name": "mop floor ",
+                    "description": "asdfadsf\n ",
+                    "weight": 1,
+                    "frequency": "weekly",
+                    "outdoor": false,
+                    "created_at": "2021-08-04T19:45:15.558Z",
+                    "updated_at": "2021-08-04T19:45:15.558Z"
+                }
+
+            ],
+            "weather_forecast": {
+                "id": null,
+                "current_weather": {
+                    "datetime": "2021-08-04 20:17:52 +0000",
+                    "sunrise": "09:40",
+                    "sunset": "00:00",
+                    "temperature": 296.11,
+                    "feels_like": 296.42,
+                    "humidity": 75,
+                    "uvi": 2.59,
+                    "visibility": 10000,
+                    "conditions": "overcast clouds",
+                    "icon": "04d"
+                },
+                "daily_weather": [
+                    {
+                        "date": "2021-08-04",
+                        "sunrise": "09:40",
+                        "sunset": "00:00",
+                        "max_temp": 296.97,
+                        "min_temp": 290.47,
+                        "conditions": "moderate rain",
+                        "icon": "10d"
+                    },
+                    {
+                        "date": "2021-08-05",
+                        "sunrise": "09:41",
+                        "sunset": "23:59",
+                        "max_temp": 292.32,
+                        "min_temp": 291.06,
+                        "conditions": "heavy intensity rain",
+                        "icon": "10d"
+                    },
+                    {
+                        "date": "2021-08-06",
+                        "sunrise": "09:42",
+                        "sunset": "23:58",
+                        "max_temp": 303.53,
+                        "min_temp": 289.56,
+                        "conditions": "clear sky",
+                        "icon": "01d"
+                    },
+                    {
+                        "date": "2021-08-07",
+                        "sunrise": "09:43",
+                        "sunset": "23:56",
+                        "max_temp": 304.64,
+                        "min_temp": 292.06,
+                        "conditions": "overcast clouds",
+                        "icon": "04d"
+                    },
+                    {
+                        "date": "2021-08-08",
+                        "sunrise": "09:44",
+                        "sunset": "23:55",
+                        "max_temp": 302.27,
+                        "min_temp": 294.34,
+                        "conditions": "light rain",
+                        "icon": "10d"
+                    }
+                ]
+            }
+        }
     }
-  }
 }

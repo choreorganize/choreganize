@@ -8,4 +8,10 @@ class HouseholdsFacade
     house_data = HouseholdService.weather_data(household_id)
     Household.new(house_data)
   end
+
+  def self.get_houshold_by_id(id)
+    household_attributes = HouseholdService.fetch_houshold(id)
+    formatted = household_attributes[:data][:attributes]
+    Household.new(formatted)
+  end
 end
