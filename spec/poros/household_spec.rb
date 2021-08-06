@@ -2,46 +2,29 @@ require 'rails_helper'
 
 RSpec.describe Household do
   it 'it should build a Household PORO' do
-    chore1 = Chore.new({ data:
-      { id: '189',
-        type: 'chore',
-        attributes:
-        { task_name: 'Mow Lawn',
-          household_id: 123,
-          description: 'Cut some grass, my friend.',
-          weight: 1,
-          frequency: 'weekly',
-          outdoor: true,
-          household:
-          { id: 123,
-            address: '87022 Victor Summit',
-            password_digest: 'L5rIcKx27E0',
-            created_at: '2021-08-02T22:59:01.512Z',
-            updated_at: '2021-08-02T22:59:01.512Z',
-            city: 'denver',
-            state: 'co' } },
-        relationships: { household: { data: { id: '82', type: 'households' } } } } })
+    chore1 = Chore.new({ data: {id: "1", type: "chore",
+                    attributes: {
+                      task_name: 'Do',
+                      description: 'do it',
+                      household_id: 91,
+                      id: 1,
+                      weight: 2,
+                      frequency: 'weekly',
+                      outdoor: true
+                    }
+                  }})
 
-    chore2 = Chore.new({ data:
-      { id: '189',
-        type: 'chore',
-        attributes:
-        { task_name: 'dishes',
-          household_id: 123,
-          description: 'do the dishes.',
-          weight: 3,
-          frequency: 'daily',
-          outdoor: false,
-          household:
-          { id: 123,
-            address: '87022 Victor Summit',
-            password_digest: 'L5rIcKx27E0',
-            created_at: '2021-08-02T22:59:01.512Z',
-            updated_at: '2021-08-02T22:59:01.512Z',
-            city: 'denver',
-            state: 'co' } },
-        relationships: { household: { data: { id: '82', type: 'households' } } } } })
-
+    chore2 = Chore.new({ data: {id: "2", type: "chore",
+                    attributes: {
+                      task_name: 'Dont Mow',
+                      description: 'no mow',
+                      household_id: 91,
+                      id: 2,
+                      weight: 3,
+                      frequency: 'daily',
+                      outdoor: false
+                    }
+                  }})
     attributes = {
       "data": {
         "id": "91",
@@ -118,23 +101,13 @@ RSpec.describe Household do
       }
     }
 
-    #attributes = { address: '123 Main Street',
-        #          city: 'Anytown',
-        #          state: 'CO',
-        #          id: '1',
-        #          roommates: [],
-        #          chores: [],
-        #           weather_forecast: {} }
-# >>>>>>> new_chore
-
     house = Household.new(attributes)
 
-    expect(house.address).to eq('9385 Dooley Plains')
-    expect(house.city).to eq('denver')
-    expect(house.state).to eq('co')
-    expect(house.id).to eq('91')
-    expect(house.roommates).to eq([])
-    expect(house.chores).to eq([chore1, chore2])
-    expect(house.weather_forecast).to be_a(Hash)
+    expect(house.address).to eq(attributes[:address])
+    expect(house.city).to eq(attributes[:city])
+    expect(house.state).to eq(attributes[:state])
+    expect(house.roommates).to eq(attributes[:roommates])
+    expect(house.chores).to eq(attributes[:chores])
+    expect(house.weather_forecast).to eq(attributes[:weather_forecast])
   end
 end

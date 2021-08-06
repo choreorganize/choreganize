@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe TaskService do
   describe '::create_task' do
     #unauthenticated
-    it 'can connect to the Google Task API', :vcr do
+    xit 'can connect to the Google Task API', :vcr do
       user_params = { roommate: {
         name: 'Suzie Kim',
         email: 'suziekim.dev@gmail.com',
@@ -19,7 +19,7 @@ RSpec.describe TaskService do
       expect(response).to be_a(Hash)
     end
 
-    it 'cannot connect to the Google Task API', :vcr do
+    xit 'cannot connect to the Google Task API', :vcr do
       user_params = { roommate: {
         name: 'Suzie Kim',
         email: 'suziekim.dev@gmail.com',

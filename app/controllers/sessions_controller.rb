@@ -12,7 +12,9 @@ class SessionsController < ApplicationController
         token: auth_hash['credentials']['token']
       }
     }
+    
     user = GoogleUserFacade.user(user_info)
+    
     session[:user_id] = user.google_id
     session[:user] = user
     if user.nil?
