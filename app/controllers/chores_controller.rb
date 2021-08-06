@@ -29,7 +29,7 @@ class ChoresController < ApplicationController
   def show
     chore_id = params[:id].to_i
     @chore = ChoresFacade.find_and_create_chore(chore_id)
-    @house = HouseholdsFacade.get_weather(current_user.household_id)
+    @house = HouseholdsFacade.get_weather(@chore.household_id)
     @daily_forecast = @house.weather_forecast[:daily_weather]
   end
 end

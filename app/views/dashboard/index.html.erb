@@ -1,4 +1,6 @@
-<%# <%= render partial: 'partials/navbar' %><br> %>
+<% if !current_user.household_id.nil? %>
+  <%= render partial: 'partials/navbar' %><br>
+<% end %> 
 
 <h1><%= current_user.name.split.first %>'s Dashboard</h1>
 <% if current_user.household_id.nil? %>

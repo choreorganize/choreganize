@@ -8,9 +8,8 @@ Rails.application.routes.draw do
   patch '/chores/:id/assignments/:id', to: 'assignment#update'
 
   resources :dashboard, only: :index, as: 'user_dashboard'
-
-  resources :households, only: %i[new create show] do
-    resources :chores, only: %i[new create show]  #possibly add, destroy
+  resources :households, only: %i[index new create show] do
+    resources :chores, only: %i[new create show update]
   end
 
 end

@@ -102,23 +102,13 @@ RSpec.describe Household do
       }
     }
 
-    #attributes = { address: '123 Main Street',
-        #          city: 'Anytown',
-        #          state: 'CO',
-        #          id: '1',
-        #          roommates: [],
-        #          chores: [],
-        #           weather_forecast: {} }
-    # >>>>>>> new_chore
-
     house = Household.new(attributes)
     
-    expect(house.address).to eq('9385 Dooley Plains')
-    expect(house.city).to eq('denver')
-    expect(house.state).to eq('co')
-    expect(house.id).to eq('91')
-    expect(house.roommates).to eq([])
-    expect(house.chores).to eq([chore1, chore2])
-    expect(house.weather_forecast).to be_a(Hash)
+    expect(house.address).to eq(attributes[:address])
+    expect(house.city).to eq(attributes[:city])
+    expect(house.state).to eq(attributes[:state])
+    expect(house.roommates).to eq(attributes[:roommates])
+    expect(house.chores).to eq(attributes[:chores])
+    expect(house.weather_forecast).to eq(attributes[:weather_forecast])
   end
 end

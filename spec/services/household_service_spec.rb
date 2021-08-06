@@ -21,7 +21,7 @@ RSpec.describe 'household service' do
         expect(response[:data][:attributes][:state]).to eq('co')
       end
     end
-
+    
     describe ' sad path ' do
     end
   end
