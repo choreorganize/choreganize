@@ -12,7 +12,7 @@ class HouseholdsController < ApplicationController
         password_confirmation: params[:password_confirmation]
       }
     }
-
+      
     HouseholdsFacade.create_household(household_info)
     flash[:success] = 'House Created!'
     redirect_to user_dashboard_index_path
@@ -20,5 +20,5 @@ class HouseholdsController < ApplicationController
 
   def show
 
-  end 
+  end
 end

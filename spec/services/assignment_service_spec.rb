@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Assignment API" do
   describe 'create an assignment' do
     describe '::create_assignment', :vcr do
-      it 'creates an assignment' do 
+      xit 'creates an assignment' do 
         user_params = { roommate: {
         name: 'Suzie Kim',
         email: 'suziekim.dev@gmail.com',
@@ -12,9 +12,9 @@ RSpec.describe "Assignment API" do
         } }
 
         roommate = GoogleUserFacade.user(user_params)
-   
+
         attributes = { data: {
-                  attributes: {      
+                  attributes: {
                   address: '123 Main Street',
                    city: 'Denver',
                    state: 'CO',
@@ -69,7 +69,7 @@ RSpec.describe "Assignment API" do
                                                          icon: '10d' }] } } } }
 
         household = Household.new(attributes)
-      
+
         chore = Chore.new({
                             id: 1,
                             task_name: 'Mow',
@@ -87,11 +87,11 @@ RSpec.describe "Assignment API" do
                         } }
 
         response = AssignmentService.create_assignment(assignment_info)
-       
+
         expect(response[:data]).to have_key(:attributes)
         expect(response[:data]).to have_key(:id)
         expect(response[:data]).to have_key(:relationships)
-        expect(response[:data][:attributes]).to have_key(:chore_id)  
+        expect(response[:data][:attributes]).to have_key(:chore_id)
         expect(response[:data][:attributes]).to have_key(:completed)
         expect(response[:data][:attributes]).to have_key(:roommate_id)
 
