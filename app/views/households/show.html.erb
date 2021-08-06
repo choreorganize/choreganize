@@ -1,24 +1,40 @@
 
 
 <%= "#{@household.weather_forecast[:current_weather][:conditions]}"%>
-
-<%= "Welcome to Household #{1}" %><br><br>
-
-
-<% "Roommates" %><br><br>
-
-<% @household.roommates.each  do |roommate|%>
-  <%=  roommate[:name] %> <br>
+<br>
+<%= "Welcome to Household #{@household.id}" %><br><br>
 
 
+<%= "Roommates" %><br>
 
+<% @roommates.each  do |roommate|%>
+<br>
+  <%=  roommate.name %> <br>
+  <% total_points = 0  %>
+  <% roommate.completed_chores.each do |chore| %>
+    <%= link_to "#{chore[:task_name]}", "#{@household.id}/chores/#{chore[:id]}", method: :get %><br>
+    <% total_points +=  chore[:weight]  %>
+  <% end %>
+  <% roommate.incomplete_chores.each do |chore| %>
+    <%= link_to "#{chore[:task_name]}", "#{@household.id}/chores/#{chore[:id]}", method: :get %><br>
+    <% end %>
+  <%= "total points #{total_points}" %><br>
 <% end %>
 
 <br>
 <br>
 
-<% "list all chores" %>
+<%= "list all chores" %><br>
 <% @household.chores.each  do |chore|%>
-<%= link_to "#{chore[:task_name]}", "chore/#{chore[:id]}", method: :get %>
+<%= link_to "#{chore[:task_name]}", "#{@household.id}/chores/#{chore[:id]}", method: :get %>
+  <%= chore[:weight] %><br>
+<% end %>
+
+<br>
+<br>
+
+<%= "list unassigned chores" %><br>
+<% @household.chores.each  do |chore|%>
+<%= link_to "#{chore[:task_name]}", "#{@household.id}/chores/#{chore[:id]}", method: :get %>
   <% chore[:weight] %><br>
 <% end %>

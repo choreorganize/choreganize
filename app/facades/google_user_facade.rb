@@ -16,7 +16,6 @@ class GoogleUserFacade
       GoogleUser.new(formatted)
     else
       formatted = response[:body][:data][:attributes]
-
       GoogleUser.new(formatted)
     end
   end
