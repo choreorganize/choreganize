@@ -8,10 +8,12 @@ class GoogleUsersService
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  def self.find_by_id(id)
+    response = connection.get("/api/v1/roommates/#{id}")
+    JSON.parse(response.body, symbolize_names: true)
+  end
 
   def self.find_by_guid(id)
-    # make a method to find user by google id
-
     response = connection.get("/api/v1/roommates/search?google_id=#{id}")
 
     {
@@ -22,7 +24,6 @@ class GoogleUsersService
 
   def self.update_user(user_info)
     response = connection.patch("/api/v1/roommates/#{user_info[:roommate][:id]}", user_info)
-    # require 'pry'; binding.pry
     JSON.parse(response.body, symbolize_names: true)
   end
 end

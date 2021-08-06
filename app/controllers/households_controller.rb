@@ -34,10 +34,17 @@ class HouseholdsController < ApplicationController
 
   def show
     @user = current_user
-    @household = HouseholdsFacade.get_household_by_id(params[:id])
-
+# binding.pry
     # if current_user.household_id == params[:id].to_i
-      # @household = HouseholdsFacade.get_houshold_by_id(params[:id])
+      @household = HouseholdsFacade.get_houshold_by_id(params[:id])
+
+      room_mates = @household.roommates
+
+      @roommates = room_mates.map do |roommate|
+        info= GoogleUsersService.find_by_id(roommate[:id])
+        formatted = info[:data][:attributes]
+        GoogleUser.new(formatted)
+      end
     # else
     #   redirect_to user_dashboard_index_url
     # end

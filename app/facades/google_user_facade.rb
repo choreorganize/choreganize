@@ -1,6 +1,5 @@
 class GoogleUserFacade
   def self.find_user(id)
-    #user_attributes = GoogleUsersService.create_or_find_user(user_info)
     user_attributes = GoogleUsersService.find_user(id)
     formatted = user_attributes[:data][:attributes]
     GoogleUser.new(formatted)
@@ -16,14 +15,12 @@ class GoogleUserFacade
       GoogleUser.new(formatted)
     else
       formatted = response[:body][:data][:attributes]
-
       GoogleUser.new(formatted)
     end
   end
 
   def self.update_user(user_info)
     user_attributes = GoogleUsersService.update_user(user_info)
-    # require 'pry'; binding.pry
     GoogleUser.new(user_attributes)
   end
 end

@@ -6,7 +6,8 @@ class Chore
               :frequency,
               :outdoor,
               :id,
-              :location
+              :location,
+              :assignments
 
   def initialize(chore_hash)
     @household_id = chore_hash[:household_id]
@@ -15,6 +16,7 @@ class Chore
     @weight = chore_hash[:weight]
     @frequency = chore_hash[:frequency]
     @outdoor = chore_hash[:outdoor]
+    @assignments = chore_hash[:assignments]
     @id = chore_hash[:id].to_i
   end
 
