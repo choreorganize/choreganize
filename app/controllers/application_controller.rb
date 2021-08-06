@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user
 
   def current_user
-    @current_user ||= GoogleUserFacade.user({roommate: session[:user].symbolize_keys}) if session[:user_id] 
+    @current_user ||= GoogleUserFacade.user({roommate: session[:user].symbolize_keys}) if session[:user_id]
   end
 
   def authenticate_user

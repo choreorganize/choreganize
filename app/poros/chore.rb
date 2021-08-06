@@ -1,6 +1,5 @@
 class Chore
-  attr_reader :id,
-              :household_id,
+  attr_reader :household_id,
               :task_name,
               :description,
               :weight,

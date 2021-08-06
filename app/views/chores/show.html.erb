@@ -4,16 +4,29 @@
   <%= form.submit 'Update Chore' %>
 <% end %>
 
+<% if !current_user.incomplete_chores.include?(@chore) %>
+  <%= form_with url: "/chores/#{@chore.id}/assignments", method: :post, local: :true do |form| %>
+    <%= form.hidden_field :household_id, :value => @chore.household_id %>
+    <%= form.hidden_field :chore_name, :value => @chore.task_name %>
+    <%= form.submit 'Claim Chore' %>
+  <% end %>
+<% end %>
+
 <% if @chore.location == 'Outdoor' %>
   <h2>Weather Forecast</h2>
-  <% @daily_forecast.each do |day| %>
-    <ul>
-      <li><%= day[:date] %></li>
-      <li><%= day[:max_temp] %></li>''
-      <li><%= day[:min_temp] %></li>
-      <li><%= day[:conditions] %></li>
-    </ul>
-  <% end %>
+  <div class="card-group">
+    <% @daily_forecast.each do |day| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= day[:date].to_datetime.strftime("%A") %></h5>
+          <p>High: <%= day[:max_temp] %></p>
+          <p>Low: <%= day[:min_temp] %></p>
+          <p>Conditions</p>
+          <p><%= day[:conditions] %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
 <ul>

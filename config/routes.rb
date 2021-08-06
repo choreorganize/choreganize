@@ -4,12 +4,15 @@ Rails.application.routes.draw do
   post '/', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  post '/chores/:id/assignments', to: 'assignment#create'
-  patch '/chores/:id/assignments/:id', to: 'assignment#update'
+  namespace :chores do
+    post '/:id/assignments', to: 'assignment#create'
+    patch '/:id/assignments/:id', to: 'assignment#update'
+  end
 
   resources :dashboard, only: :index, as: 'user_dashboard'
+  resources :dashboard, only: :update, as: 'join_house'
+
   resources :households, only: %i[index new create show] do
     resources :chores, only: %i[new create show update]
   end
-
 end

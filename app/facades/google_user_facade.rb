@@ -1,6 +1,5 @@
 class GoogleUserFacade
   def self.find_user(id)
-    #user_attributes = GoogleUsersService.create_or_find_user(user_info)
     user_attributes = GoogleUsersService.find_user(id)
     formatted = user_attributes[:data][:attributes]
     GoogleUser.new(formatted)

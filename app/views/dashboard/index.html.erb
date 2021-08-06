@@ -1,11 +1,19 @@
 <% if !current_user.household_id.nil? %>
   <%= render partial: 'partials/navbar' %><br>
-<% end %> 
+
+<% end %>
 
 <h1><%= current_user.name.split.first %>'s Dashboard</h1>
 <% if current_user.household_id.nil? %>
     <p>Join or create a hosuehold</p>
     <%= link_to "Create A Household", new_household_path%>
+
+      <%= form_with url: join_house_path(id: current_user.id), method: :patch, remote: true do |form| %>
+        <%= form.label :household_id, 'Enter Households id:' %>
+        <%= form.text_field :household_id %>
+        <%= form.submit 'Find and Join Household' %>
+      <% end %>
+
 <% else %>
   <ul class="incompleteChores">
     <h2>Incomplete Chores</h2>
