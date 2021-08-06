@@ -9,7 +9,6 @@ class GoogleUser
               :completed_chores
 
   def initialize(user_info)
-    require 'pry'; binding.pry
     @id = user_info[:id]
     @google_id = user_info[:google_id]
     @name = user_info[:name]

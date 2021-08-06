@@ -12,9 +12,7 @@ class DashboardController < ApplicationController
         household_id: params[:household_id]
       }
     }
-    require 'pry'; binding.pry
     GoogleUserFacade.update_user(update_info)
-    require 'pry'; binding.pry
     redirect_to user_dashboard_index_path
   end
 end

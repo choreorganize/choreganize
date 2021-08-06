@@ -22,7 +22,6 @@ class GoogleUsersService
 
   def self.update_user(user_info)
     response = connection.patch("/api/v1/roommates/#{user_info[:roommate][:id]}", user_info)
-    require 'pry'; binding.pry
     JSON.parse(response.body, symbolize_names: true)
   end
 end

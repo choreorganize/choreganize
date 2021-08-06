@@ -5,7 +5,6 @@ RSpec.describe 'ChoresFacade' do
     xit 'finds chore and returns attribute attributes', :vcr do
       chore_id = 1
       chore = ChoresFacade.find_and_create_chore(chore_id)
-      require 'pry'; binding.pry
 
       expect(chore).to be_a(Chore)
       expect(chore.task_name).to eq("wash dishes")
@@ -18,6 +17,6 @@ RSpec.describe 'ChoresFacade' do
 
   # describe '::create_chore' do
   #   it 'finds chore and returns attribute attributes', :vcr do
-  #   end 
+  #   end
   # end
 end

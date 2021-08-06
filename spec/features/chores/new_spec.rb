@@ -108,7 +108,6 @@ RSpec.describe 'Chore New Page' do
 
         click_button 'Submit Chore'
       end
-      # require 'pry'; binding.pry
 
       # expect(current_path).to eq(household_chore_path)
       expect(page).to have_content('Chore Created!')
@@ -134,7 +133,6 @@ RSpec.describe 'Chore New Page' do
        	    'User-Agent'=>'Faraday v1.5.1'}
         ).
        to_return(status: 200, body: respite.to_json, headers: {})
-       # require 'pry'; binding.pry
 
       person = { 'household_id' => '82' }
 
