@@ -15,7 +15,7 @@ RSpec.describe 'Welcome Page' do
   end
 
   context "happy path" do
-    it 'has a button to Sign in with Google that redirects to user dashboard' do
+    xit 'has a button to Sign in with Google that redirects to user dashboard' do
       # click_button "Sign in with Google"
       # expect(current_path).to eq(user_dashboard_index_path)
       # expect(page).to have_content("Welcome")
@@ -24,7 +24,7 @@ RSpec.describe 'Welcome Page' do
   end
 
   context "sad path" do
-    it 'has a button to Sign in with Google that can fail to login' do
+    xit 'has a button to Sign in with Google that can fail to login' do
       # click_button "Sign in with Google"
       # expect(current_path).to_not eq(user_dashboard_index_path)
       # expect(page).to have_content("Sorry, sign in not successful.")

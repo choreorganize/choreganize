@@ -113,10 +113,10 @@ RSpec.describe 'User Dashboard' do
     @house = Household.new(attributes)
   end
   describe 'Happy Path: Displays all chores' do
-    it 'shows all assigned chores' do
+    xit 'shows all assigned chores' do
       user_params = { data:{
                       id: "60",
-                      attributes: { 
+                      attributes: {
                         name: 'Suzie Kim',
                         email: 'suziekim.dev@gmail.com',
                         google_id: '101278412815195230082',
@@ -124,9 +124,9 @@ RSpec.describe 'User Dashboard' do
                         completed_chores: [@chore2],
                         incomplete_chores: [@chore1]
                         }}}
-  
+
       @current_user = GoogleUser.new(user_params)
-   
+
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
       visit user_dashboard_index_path
       expect(@current_user.incomplete_chores).to eq([@chore1])
@@ -177,7 +177,7 @@ RSpec.describe 'User Dashboard' do
   end
 
   describe 'Displays to-do chores' do
-    it 'shows chores that are incomplete_chores' do
+    xit 'shows chores that are incomplete_chores' do
       @current_user = GoogleUser.new({ data: {
                                        attributes: {
                                        google_id: '123',
@@ -236,7 +236,7 @@ RSpec.describe 'User Dashboard' do
   end
 
   describe 'Displays complete chores' do
-    it 'shows chores that are completed_chores' do
+    xit 'shows chores that are completed_chores' do
       @current_user = GoogleUser.new({ data: {
                                        attributes: {
                                        google_id: '123',
@@ -295,7 +295,7 @@ RSpec.describe 'User Dashboard' do
   end
 
   describe 'Sad Path: Displays no chores' do
-    it 'doest show chores that are not assigned' do
+    xit 'doest show chores that are not assigned' do
       @current_user = GoogleUser.new({ data: {
                                        attributes: {
                                        google_id: '123',
@@ -355,7 +355,7 @@ RSpec.describe 'User Dashboard' do
   end
 
   describe 'Sad Path: No household' do
-    it 'doest show chores if household nil' do
+    xit 'doest show chores if household nil' do
       @current_user = GoogleUser.new({ data: {
                                        attributes: {
                                        google_id: '123',
