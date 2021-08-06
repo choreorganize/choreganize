@@ -6,11 +6,11 @@ class HouseholdsFacade
   end
 
   def self.get_weather(household_id)
-    house_data = HouseholdService.weather_data(household_id)
+    house_data = HouseholdService.weather_data(household_id)[:data][:attributes]
     Household.new(house_data)
   end
 
-  def self.get_houshold_by_id(id)
+  def self.get_household_by_id(id)
     household_attributes = HouseholdService.fetch_houshold(id)
     formatted = household_attributes[:data][:attributes]
     Household.new(formatted)

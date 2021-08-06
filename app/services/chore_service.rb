@@ -5,7 +5,8 @@ class ChoreService
   end
 
   def self.create_or_find_chore(chore_info)
-    response = connection.get('/api/v1/chores', chore_info)
+    response = connection.post('/api/v1/chores', chore_info)
+    require 'pry'; binding.pry
     JSON.parse(response.body, symbolize_names: true)
   end
 

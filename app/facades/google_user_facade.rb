@@ -23,6 +23,7 @@ class GoogleUserFacade
 
   def self.update_user(user_info)
     user_attributes = GoogleUsersService.update_user(user_info)
+    # require 'pry'; binding.pry
     GoogleUser.new(user_attributes)
   end
 end
