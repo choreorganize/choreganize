@@ -34,7 +34,7 @@ class HouseholdsController < ApplicationController
   
   def show
     @user = current_user
-    @household = HouseholdsFacade.get_houshold_by_id(params[:id])
+    @household = HouseholdsFacade.get_household_by_id(params[:id])
 
     # if current_user.household_id == params[:id].to_i
       # @household = HouseholdsFacade.get_houshold_by_id(params[:id])
