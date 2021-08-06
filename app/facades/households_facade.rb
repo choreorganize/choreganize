@@ -1,8 +1,8 @@
 class HouseholdsFacade
   def self.create_household(household_info)
     household_attributes = HouseholdService.create_or_find_household(household_info)
-
-    Household.new(household_attributes)
+    formatted = household_attributes[:data][:attributes]
+    Household.new(formatted)
   end
 
   def self.get_weather(household_id)

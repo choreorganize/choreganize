@@ -6,6 +6,7 @@ class GoogleUserFacade
   end
 
   def self.user(user_info)
+
     id = user_info[:roommate][:google_id]
     response = GoogleUsersService.find_by_guid(id)
 
@@ -20,7 +21,8 @@ class GoogleUserFacade
   end
 
   def self.update_user(user_info)
-    user_attributes = GoogleUsersService.update_user(user_info)
+    # binding.pry
+    user_attributes = GoogleUsersService.update_user(user_info)[:data][:attributes]
     GoogleUser.new(user_attributes)
   end
 end

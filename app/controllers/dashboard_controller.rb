@@ -1,11 +1,14 @@
 class DashboardController < ApplicationController
   def index
+    # binding.pry
     @user = current_user
     @incomplete_chores = @user.incomplete_chores
     @completed_chores = @user.completed_chores
   end
 
   def update
+
+    # binding.pry
     update_info = {
       roommate: {
         id: params[:id],
@@ -15,6 +18,7 @@ class DashboardController < ApplicationController
     # require 'pry'; binding.pry
     a = GoogleUserFacade.update_user(update_info)
     # require 'pry'; binding.pry
+    # binding.pry
     redirect_to user_dashboard_index_path
   end
 end
