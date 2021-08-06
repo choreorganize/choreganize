@@ -29,7 +29,6 @@ class TaskService
 
   def connect(url, user)
     Faraday.new(url) do |faraday|
-      require 'pry'; binding.pry
       faraday.headers['Authorization'] = "Bearer #{user.token}"
       faraday.adapter Faraday.default_adapter
     end
