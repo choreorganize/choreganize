@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 require 'rails_helper'
 
 RSpec.describe 'Chore New Page' do
@@ -150,7 +149,6 @@ RSpec.describe 'Chore New Page' do
     end
   end
 end
-=======
 # require 'rails_helper'
 #
 # RSpec.describe 'Chore New Page' do
@@ -304,4 +302,3 @@ end
 #     end
 #   end
 # end
->>>>>>> 8cf764f23d706d3d6a417a3b14246650bb6557b6
