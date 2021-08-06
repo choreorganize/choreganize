@@ -40,9 +40,9 @@ td {
 body {
    text-align: center;
    margin: auto;
-    width: 60%;
-    border: 3px solid #73AD21;
-    padding: 20px;
+    width: 70%;
+    border: 7px solid #73AD21;
+    padding: 25px;
  }
 
  p.in {
@@ -58,5 +58,5 @@ body {
 }
 
 .tab {
-margin-left: 200px;
+margin-left: 140px;
 }
