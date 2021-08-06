@@ -2,25 +2,29 @@ require 'rails_helper'
 
 RSpec.describe Household do
   it 'it should build a Household PORO' do
-    chore1 = Chore.new({
-      id: 1,
-      task_name: 'Mow',
-      household_id: '123',
-      description: 'Cut some grass, my friend.',
-      weight: '1',
-      frequency: 'weekly',
-      outdoor: 'true'
-    })
+    chore1 = Chore.new({ data: {id: "1", type: "chore",
+                    attributes: {
+                      task_name: 'Do',
+                      description: 'do it',
+                      household_id: 91,
+                      id: 1,
+                      weight: 2,
+                      frequency: 'weekly',
+                      outdoor: true
+                    }
+                  }})
 
-    chore2 = Chore.new({
-      id: 2,
-      task_name: 'Dont Mow',
-      household_id: '123',
-      description: 'Dont Cut some grass, my friend.',
-      weight: '3',
-      frequency: 'daily',
-      outdoor: 'false'
-    })
+    chore2 = Chore.new({ data: {id: "2", type: "chore",
+                    attributes: {
+                      task_name: 'Dont Mow',
+                      description: 'no mow',
+                      household_id: 91,
+                      id: 2,
+                      weight: 3,
+                      frequency: 'daily',
+                      outdoor: false
+                    }
+                  }})
 
     attributes = {
       "data": {

@@ -42,7 +42,4 @@ class HouseholdsController < ApplicationController
     #   redirect_to user_dashboard_index_url
     # end
   end
-
-
-
 end

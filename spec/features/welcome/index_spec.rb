@@ -1,12 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe 'Welcome Page' do
+  before(:each)do
+    # person = { 'household_id' => '82',
+    #            'google_id' => ENV["GOOGLE_CLIENT_ID"],
+    #            'token' => ENV["GOOGLE_CLIENT_SECRET"],
+    #            'id' => '8'}
+    #
+    # ApplicationController.any_instance.stub(:current_user).and_return(@current_user = GoogleUser.new(person))
+    # logger = GoogleUser.new(person)
+    # # stub_google_oauth2
+    #
+    # visit root_path
+  end
+
   context "happy path" do
     it 'has a button to Sign in with Google that redirects to user dashboard' do
-      # stub_google_oauth2
-      # @user = create(:user)
-      # visit root_path
-      #
       # click_button "Sign in with Google"
       # expect(current_path).to eq(user_dashboard_index_path)
       # expect(page).to have_content("Welcome")
@@ -16,10 +25,6 @@ RSpec.describe 'Welcome Page' do
 
   context "sad path" do
     it 'has a button to Sign in with Google that can fail to login' do
-      # stub_google_oauth2
-      # @user = create(:user)
-      # visit root_path
-      #
       # click_button "Sign in with Google"
       # expect(current_path).to_not eq(user_dashboard_index_path)
       # expect(page).to have_content("Sorry, sign in not successful.")
