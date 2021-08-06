@@ -11,6 +11,8 @@ class HouseholdsFacade
   end
 
   def self.get_houshold_by_id(id)
+    # binding.pry
+
     household_attributes = HouseholdService.fetch_houshold(id)
     formatted = household_attributes[:data][:attributes]
     Household.new(formatted)

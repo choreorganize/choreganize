@@ -22,22 +22,29 @@ class HouseholdsController < ApplicationController
     flash[:success] = 'House Created!'
 
     household_id = {
-                    roommate: 
+                    roommate:
                     {
-                    household_id: household.id 
+                    household_id: household.id
                     }
                     }
 
     GoogleUserFacade.update_user(household_id)
     redirect_to household_path(id: household.id)
   end
-  
+
   def show
     @user = current_user
-    @household = HouseholdsFacade.get_household_by_id(params[:id])
-
+# binding.pry
     # if current_user.household_id == params[:id].to_i
-      # @household = HouseholdsFacade.get_houshold_by_id(params[:id])
+      @household = HouseholdsFacade.get_houshold_by_id(params[:id])
+
+      room_mates = @household.roommates
+
+      @roommates = room_mates.map do |roommate|
+        info= GoogleUsersService.find_by_id(roommate[:id])
+        formatted = info[:data][:attributes]
+        GoogleUser.new(formatted)
+      end
     # else
     #   redirect_to user_dashboard_index_url
     # end
