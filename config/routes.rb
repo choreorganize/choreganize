@@ -4,9 +4,12 @@ Rails.application.routes.draw do
   post '/', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :dashboard, only: :index, as: 'user_dashboard'
+  post '/chores/:id/assignments', to: 'assignment#create'
+  patch '/chores/:id/assignments/:id', to: 'assignment#update'
 
+  resources :dashboard, only: :index, as: 'user_dashboard'
   resources :households, only: %i[index new create show] do
-    resources :chores, only: %i[new create show]
+    resources :chores, only: %i[new create show update]
   end
+
 end
