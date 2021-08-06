@@ -99,22 +99,12 @@ RSpec.describe Household do
     }
 
     house = Household.new(attributes)
-
-<<<<<<< HEAD
+    
     expect(house.address).to eq(attributes[:address])
     expect(house.city).to eq(attributes[:city])
     expect(house.state).to eq(attributes[:state])
     expect(house.roommates).to eq(attributes[:roommates])
     expect(house.chores).to eq(attributes[:chores])
     expect(house.weather_forecast).to eq(attributes[:weather_forecast])
-=======
-    expect(house.address).to eq('9385 Dooley Plains')
-    expect(house.city).to eq('denver')
-    expect(house.state).to eq('co')
-    expect(house.id).to eq('91')
-    expect(house.roommates).to eq([])
-    expect(house.chores).to eq([chore1, chore2])
-    expect(house.weather_forecast).to be_a(Hash)
->>>>>>> 2a483e48c29cbebb7127c769461c10c2a4cad043
   end
 end
