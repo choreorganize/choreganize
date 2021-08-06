@@ -5,6 +5,7 @@ class AssignmentService
   end
 
   def self.create_assignment(assignment_info)
+    require 'pry'; binding.pry
     response = connection.post('/api/v1/assignments', assignment_info)
     JSON.parse(response.body, symbolize_names: true)
   end

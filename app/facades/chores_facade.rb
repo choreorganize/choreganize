@@ -1,8 +1,13 @@
 class ChoresFacade
   def self.find_and_create_chore(id)
+    chore_hash = ChoreService.find_by_id(id)[:data]
+    Chore.new(chore_hash[:attributes])
+  end
+
+  def self.find_nested_chore(id)
+    chore_hash = ChoreService.find_by_id(id)[:data].first
     require 'pry'; binding.pry
-    chore_hash = ChoreService.find_by_id(id)[:data][:attributes]
-    Chore.new(chore_hash)
+    Chore.new(chore_hash[:attributes])
   end
 
   def self.create_chore(chore_info)

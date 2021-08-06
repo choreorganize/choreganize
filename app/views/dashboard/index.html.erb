@@ -3,12 +3,16 @@
 <h1><%= current_user.name.split.first %>'s Dashboard</h1><hr>
 
 <% if current_user.household_id.nil? %>
-    <div class="left">
+    <%
+=begin%>
+ <div class="left">
       <h5>&emsp;&emsp;&emsp;&emsp;<%= link_to "=> New Household Link", new_household_path %></h5><br><br>
-    </div>
+    </div> 
+<%
+=end%>
 
     <div class='createHousehold' %>
-      <%= bootstrap_form_with(url: households_path, method: :post, class: 'form-inline', local: true) do |f|  %><h4 class="tab">Join a Household:</h4>&emsp;
+      <%= bootstrap_form_with(url: households_path, method: :patch, class: 'form-inline', local: true) do |f|  %><h4 class="tab">Join a Household:</h4>&emsp;
         <%= f.text_field :household_id, placeholder: "Enter household ID", skip_label: true %><br>&emsp;&emsp;
         <%= f.submit 'Submit' %>
       <% end %> <br><br><br>
@@ -21,22 +25,26 @@
 
       <br><br><p>Join or create a household</p>
 <% else %>
-  <ul class="incompleteChores">
+  <ul class="incompleteChores" align-text='left'>
     <h2>Incomplete Chores</h2>
     <% if @incomplete_chores.nil? %>
       <p>You have no incomplete chores!🎉</p>
     <% else %>
       <% @incomplete_chores.each do |incomplete_chore| %>
-        <li>Task Name: <%= link_to "#{incomplete_chore.task_name}", household_chore_path(incomplete_chore.household_id, incomplete_chore.id)%></li>
-        <li>Description: <%= incomplete_chore.description %></li>
-        <li>Frequency: <%= incomplete_chore.frequency %></li>
-        <li>Weight: <%= incomplete_chore.weight %></li>
-        <li>Location: <%= incomplete_chore.location %></li>
-        <% if incomplete_chore.assignments.empty? %>
+        <li>Task Name: <%= link_to "#{incomplete_chore[:task_name]}", household_chore_path(incomplete_chore[:household_id], incomplete_chore[:id])%></li>
+        <li>Description: <%= incomplete_chore[:description] %></li>
+        <li>Frequency: <%= incomplete_chore[:frequency] %></li>
+        <li>Weight: <%= incomplete_chore[:weight] %></li>
+        <li>Location: <%= incomplete_chore[:location] %></li>
+        <%
+=begin%>
+ <% if incomplete_chore.assignments.empty? %>
           <p>You have Assigments</p>
         <% else %>
-          <li><%= button_to "Done", "/chores/#{incomplete_chore.id}/assignments/#{incomplete_chore.assignments[-1].id}", method: :update %></li>
-        <% end %>
+          <li><%= button_to "Done", "/chores/#{incomplete_chore[:id]}/assignments/#{incomplete_chore.assignments[-1][:id]}", method: :update %></li>
+        <% end %> 
+<%
+=end%>
       <% end %>
     <% end %>
   </ul>
@@ -47,11 +55,11 @@
       <p>You have no completed chores😭.</p>
     <% else %>
       <% @completed_chores.each do |completed_chore| %>
-        <li>Task Name: <%= link_to "#{completed_chore.task_name}", household_chore_path(completed_chore.household_id, completed_chore.id)%></li>
-        <li>Description: <%= completed_chore.description %></li>
-        <li>Frequency: <%= completed_chore.frequency %></li>
-        <li>Weight: <%= completed_chore.weight %></li>
-        <li>Location: <%= completed_chore.location %></li>
+        <li>Task Name: <%= link_to "#{completed_chore[:task_name]}", household_chore_path(completed_chore[:household_id], completed_chore[:id])%></li>
+        <li>Description: <%= completed_chore[:description] %></li>
+        <li>Frequency: <%= completed_chore[:frequency] %></li>
+        <li>Weight: <%= completed_chore[:weight] %></li>
+        <li>Location: <%= completed_chore[:location] %></li>
       <% end %>
     <% end %>
   </ul>

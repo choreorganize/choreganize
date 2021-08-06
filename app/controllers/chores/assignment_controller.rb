@@ -1,7 +1,8 @@
 class Chores::AssignmentController < ApplicationController
   def create
-    @chore = ChoresFacade.find_and_create_chore(chore_id)
-
+    # @chore = ChoresFacade.find_and_create_chore(@chore_id)
+    @chore = ChoresFacade.find_nested_chore(@chore_id)
+    require 'pry'; binding.pry
     assignment_info = {
       assignment:
       {
