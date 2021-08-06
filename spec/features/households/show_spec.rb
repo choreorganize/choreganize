@@ -3,14 +3,14 @@ require 'rails_helper'
 RSpec.describe 'houshold show page' do
 
   describe ' lacking authentication ' do
-    it 'if user is not loged in ' do
+    xit 'if user is not loged in ' do
       household_id = 1
 
       visit "households/#{household_id}"
       expect(current_path).to eq("/")
 
     end
-    it 'if user does not belong to the household in question' do
+    xit 'if user does not belong to the household in question' do
 
 
     end
@@ -19,7 +19,7 @@ RSpec.describe 'houshold show page' do
 
 
   describe ' unassighned chores section ' do
-    it 'displays all un assigned chores in household' do
+    xit 'displays all un assigned chores in household' do
 
       household = File.read('spec/fixtures/household_service/household_test.json')
 
@@ -77,7 +77,7 @@ RSpec.describe 'houshold show page' do
   end
 
   describe 'general info ' do
-    it 'shows the forecast ' do
+    xit 'shows the forecast ' do
       household = File.read('spec/fixtures/household_service/household_test.json')
 
       stub_request(:get, "https://choreganize-api.herokuapp.com/api/v1/household/1").
@@ -108,7 +108,7 @@ RSpec.describe 'houshold show page' do
       expect(page).to have_content("overcast clouds")
     end
 
-    it 'house hold id displayed ' do
+    xit 'house hold id displayed ' do
       household = File.read('spec/fixtures/household_service/household_test.json')
 
       stub_request(:get, "https://choreganize-api.herokuapp.com/api/v1/household/1").
