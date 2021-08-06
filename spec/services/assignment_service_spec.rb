@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Assignment API" do
   describe 'create an assignment' do
     describe '::create_assignment', :vcr do
-      xit 'creates an assignment' do
+      xit 'creates an assignment' do 
         user_params = { roommate: {
         name: 'Suzie Kim',
         email: 'suziekim.dev@gmail.com',

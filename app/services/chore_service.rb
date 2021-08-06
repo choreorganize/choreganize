@@ -7,6 +7,7 @@ end
 
 def self.create_or_find_chore(chore_info)
   response = connection.get('/api/v1/chores', chore_info)
+
   JSON.parse(response.body, symbolize_names: true)
 end
 

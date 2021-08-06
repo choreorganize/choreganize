@@ -2,115 +2,115 @@ require 'rails_helper'
 
 RSpec.describe 'User Dashboard' do
   before :each do
-    @chore1 = Chore.new({ data: {
-                          attributes: {
-                          id: "1",
-                          task_name: 'Mow',
-                          household_id: 123,
-                          description: 'Cut some grass, my friend.',
-                          weight: 1,
-                          frequency: 'weekly',
-                          outdoor: true
-                        }}})
-
-    @chore2 = Chore.new({ data: {
-                          attributes: {
-                          id: "2",
-                          task_name: 'Clean Dishes',
-                          household_id: 123,
-                          description: 'Clean some dishes.',
-                          weight: 3,
-                          frequency: 'daily',
-                          outdoor: false
-                        }}})
-
-    @chore3 = Chore.new({ data: {
-                          attributes: {
-                          id: "3",
-                          task_name: 'Laundry',
-                          household_id: 123,
-                          description: 'Wash some laundry.',
-                          weight: 2,
-                          frequency: 'bimonthly',
-                          outdoor: true
-                        }}})
-
-    attributes = {
-      "data": {
-        "id": '91',
-        "type": 'households',
-        "attributes": {
-          "address": '9385 Dooley Plains',
-          "city": 'denver',
-          "state": 'co',
-          "roommates": [],
-          "chores": [@chore1, @chore2, @chore3],
-          "weather_forecast": {
-            "id": 'nil',
-            "current_weather": {
-              "datetime": '2021-08-02 18:58:52 -0400',
-              "sunrise": '08:00',
-              "sunset": '22:12',
-              "temperature": 303,
-              "feels_like": 301.76,
-              "humidity": 30,
-              "uvi": 2.8,
-              "visibility": 10_000,
-              "conditions": 'broken clouds',
-              "icon": '04d'
-            },
-            "daily_weather": [
-              {
-                "date": '2021-08-02',
-                "sunrise": '08:00',
-                "sunset": '22:12',
-                "max_temp": 303.67,
-                "min_temp": 292.59,
-                "conditions": 'scattered clouds',
-                "icon": '03d'
-              },
-              {
-                "date": '2021-08-03',
-                "sunrise": '08:01',
-                "sunset": '22:11',
-                "max_temp": 298.35,
-                "min_temp": 293.45,
-                "conditions": 'light rain',
-                "icon": '10d'
-              },
-              {
-                "date": '2021-08-04',
-                "sunrise": '08:01',
-                "sunset": '22:09',
-                "max_temp": 305.11,
-                "min_temp": 293.5,
-                "conditions": 'clear sky',
-                "icon": '01d'
-              },
-              {
-                "date": '2021-08-05',
-                "sunrise": '08:02',
-                "sunset": '22:08',
-                "max_temp": 307.77,
-                "min_temp": 294.13,
-                "conditions": 'clear sky',
-                "icon": '01d'
-              },
-              {
-                "date": '2021-08-06',
-                "sunrise": '08:03',
-                "sunset": '22:07',
-                "max_temp": 308.6,
-                "min_temp": 295.06,
-                "conditions": 'light rain',
-                "icon": '10d'
-              }
-            ]
-          }
-        }
-      }
-    }
-    @house = Household.new(attributes)
+    # @chore1 = Chore.new({ data: {
+    #                       attributes: {
+    #                       id: "1",
+    #                       task_name: 'Mow',
+    #                       household_id: 123,
+    #                       description: 'Cut some grass, my friend.',
+    #                       weight: 1,
+    #                       frequency: 'weekly',
+    #                       outdoor: true
+    #                     }}})
+    #
+    # @chore2 = Chore.new({ data: {
+    #                       attributes: {
+    #                       id: "2",
+    #                       task_name: 'Clean Dishes',
+    #                       household_id: 123,
+    #                       description: 'Clean some dishes.',
+    #                       weight: 3,
+    #                       frequency: 'daily',
+    #                       outdoor: false
+    #                     }}})
+    #
+    # @chore3 = Chore.new({ data: {
+    #                       attributes: {
+    #                       id: "3",
+    #                       task_name: 'Laundry',
+    #                       household_id: 123,
+    #                       description: 'Wash some laundry.',
+    #                       weight: 2,
+    #                       frequency: 'bimonthly',
+    #                       outdoor: true
+    #                     }}})
+    #
+    # attributes = {
+    #   "data": {
+    #     "id": '91',
+    #     "type": 'households',
+    #     "attributes": {
+    #       "address": '9385 Dooley Plains',
+    #       "city": 'denver',
+    #       "state": 'co',
+    #       "roommates": [],
+    #       "chores": [@chore1, @chore2, @chore3],
+    #       "weather_forecast": {
+    #         "id": 'nil',
+    #         "current_weather": {
+    #           "datetime": '2021-08-02 18:58:52 -0400',
+    #           "sunrise": '08:00',
+    #           "sunset": '22:12',
+    #           "temperature": 303,
+    #           "feels_like": 301.76,
+    #           "humidity": 30,
+    #           "uvi": 2.8,
+    #           "visibility": 10_000,
+    #           "conditions": 'broken clouds',
+    #           "icon": '04d'
+    #         },
+    #         "daily_weather": [
+    #           {
+    #             "date": '2021-08-02',
+    #             "sunrise": '08:00',
+    #             "sunset": '22:12',
+    #             "max_temp": 303.67,
+    #             "min_temp": 292.59,
+    #             "conditions": 'scattered clouds',
+    #             "icon": '03d'
+    #           },
+    #           {
+    #             "date": '2021-08-03',
+    #             "sunrise": '08:01',
+    #             "sunset": '22:11',
+    #             "max_temp": 298.35,
+    #             "min_temp": 293.45,
+    #             "conditions": 'light rain',
+    #             "icon": '10d'
+    #           },
+    #           {
+    #             "date": '2021-08-04',
+    #             "sunrise": '08:01',
+    #             "sunset": '22:09',
+    #             "max_temp": 305.11,
+    #             "min_temp": 293.5,
+    #             "conditions": 'clear sky',
+    #             "icon": '01d'
+    #           },
+    #           {
+    #             "date": '2021-08-05',
+    #             "sunrise": '08:02',
+    #             "sunset": '22:08',
+    #             "max_temp": 307.77,
+    #             "min_temp": 294.13,
+    #             "conditions": 'clear sky',
+    #             "icon": '01d'
+    #           },
+    #           {
+    #             "date": '2021-08-06',
+    #             "sunrise": '08:03',
+    #             "sunset": '22:07',
+    #             "max_temp": 308.6,
+    #             "min_temp": 295.06,
+    #             "conditions": 'light rain',
+    #             "icon": '10d'
+    #           }
+    #         ]
+    #       }
+    #     }
+    #   }
+    # }
+    # @house = Household.new(attributes)
   end
   describe 'Happy Path: Displays all chores' do
     xit 'shows all assigned chores' do
